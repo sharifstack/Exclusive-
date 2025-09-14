@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+  }
+
+  img {
+    vertical-align: middle;
+  }
+
+  a {
+    display: inline-block;
+    text-decoration: none;
+  }
+
+  ul,
+  li,
+  ol {
+    list-style: none;
+  }
+}
+
+:root {
+  --Primary_FFFFFF: #ffffff;
+  --Primary1_363738: #363738;
+  --Secondary_F5F5F5: #f5f5f5;
+  --Secondary1_FEFAF1: #fefaf1;
+  --BG_FFFFFF: #ffffff;
+  --text_FAFAFA: #fafafa;
+  --Text1_7D8184: #7d8184;
+  --Text2_000000: #000000;
+  --button_000000: #000000;
+  --Secondary2_DB4444: #db4444;
+  --Button1_00FF66: #00ff66;
+  --Button2_DB4444: #db4444;
+  --HoverButton_E07575: #e07575;
+  --HoverButton2_A0BCE0: #a0bce0;
+  --Poppins: "Poppins", sans-serif;
+  --Inter: "Inter", sans-serif;
+}
+@layer components {
+  .menuHover {
+    position: relative;
+  }
+
+  .menuHover::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: var(--HoverButton2_A0BCE0);
+    transform: scale(0);
+    transition: all linear 0.2s;
+  }
+
+  .menuHover:hover::after {
+    transform: scale(1);
+  }
+
+  .cartoffer {
+    position: relative;
+  }
+
+  .cartoffer::after {
+    position: absolute;
+    content: "0";
+    left: 100%;
+    top: 0;
+    border-radius: 100%;
+    height: 16px;
+    width: 16px;
+    background-color: var(--Secondary2_DB4444);
+    transform: translateX(-100%);
+    text-align: center;
+    font-size: 12px;
+    line-height: 16px;
+
+  }
+}
