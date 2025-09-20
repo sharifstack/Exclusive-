@@ -1,23 +1,23 @@
 import React from "react";
-import Heading from "../../CommonComponents/Heading";
-import Timer from "../../Features/Timer";
 import ProductCard from "../../CommonComponents/ProductCard";
+import ProductCommonLayout from "../../CommonComponents/ProductCommonLayout";
 
 const FlashSale = () => {
   return (
-    <div className="mt-[140px] mb-[60px]">
+    <div>
       <div className="container">
-        <div className="flex gap-10 items-end">
-          <Heading title={"Today’s"} desc={"Flash Sales"} />
-          <Timer />
-        </div>
+        <ProductCommonLayout 
+          ProductCard={ProductCard}
+          timeStamp={true}
+          timeOffer={2}
+          Arrows={true}
+          title="Today’s"
+          desc="Flash Sales"
+          Data={[...new Array(10)]}
+        />
 
-        <div className="flex justify-between">
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+        <div className="allProductsbtn  flex justify-center border-b border-HoverButton2_A0BCE0 pb-[60px]">
+          <h2 className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded">View All Products</h2>
         </div>
       </div>
     </div>

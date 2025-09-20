@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { FaEllipsisVertical } from "react-icons/fa6";
 
-const Timer = () => {
-  const [time, setTime] = useState(4 * 24 * 60 * 60 * 1000);
+const Timer = ({ timeOffer }) => {
+  const [time, setTime] = useState(timeOffer * 24 * 60 * 60 * 1000);
 
   useEffect(() => {
     const worker = new Worker(
-      new URL("../../../CountDownWorker.js", import.meta.url)
+      new URL("../../CountDownWorker.js", import.meta.url)
     );
     worker.postMessage(time);
     worker.onmessage = (event) => {

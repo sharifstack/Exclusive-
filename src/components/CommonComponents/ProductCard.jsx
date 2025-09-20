@@ -8,7 +8,7 @@ const ProductCard = () => {
   return (
     <div className="mt-10">
       <div className="w-[270px] ">
-        <div className="top bg-Secondary_F5F5F5">
+        <div className="top bg-Secondary_F5F5F5 rounded overflow-hidden group cursor-pointer">
           <div className="relative">
             <span className="w-[55px] h-[26px] bg-Secondary2_DB4444 absolute left-3 top-3 rounded flex justify-center items-center">
               <h4 className="text-white font-poppins font-normal text-xs inline-block">
@@ -17,17 +17,23 @@ const ProductCard = () => {
             </span>
 
             <div className="absolute right-3 top-3">
-              <span className="text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full mb-2">
+              <span className="text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full mb-2 hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA transition-all cursor-pointer">
                 <IoIosHeartEmpty className="text-2xl " />
               </span>
 
-              <span className="text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full">
+              <span className="text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full hover:bg-Primary1_363738 hover:text-text_FAFAFA transition-all cursor-pointer">
                 <IoEyeOutline className="text-2xl " />
               </span>
             </div>
           </div>
           <div className="flex items-center justify-center p-[49px]">
             <img className="w-full h-full object-cover" src={p1} alt={p1} />
+          </div>
+
+          <div className="addtocart opacity-0 group-hover:opacity-100 bg-button_000000 py-2 transition-all cursor-pointer">
+            <h1 className="font-poppins text-base font-medium text-Primary_FFFFFF text-center">
+              Add To Cart
+            </h1>
           </div>
         </div>
 
