@@ -1,23 +1,29 @@
 import React from "react";
 import ProductCard from "../../CommonComponents/ProductCard";
 import ProductCommonLayout from "../../CommonComponents/ProductCommonLayout";
+import { useGetAllProductQuery } from "../../../Features/Api/ProductApi";
 
 const FlashSale = () => {
+  const { data, error, isLoading } = useGetAllProductQuery();
+
   return (
     <div>
       <div className="container">
-        <ProductCommonLayout 
+        <ProductCommonLayout
           ProductCard={ProductCard}
           timeStamp={true}
           timeOffer={2}
           Arrows={true}
           title="Today’s"
           desc="Flash Sales"
-          Data={[...new Array(10)]}
+          Data={data?.products}
+          Loading={isLoading}
         />
 
         <div className="allProductsbtn  flex justify-center border-b border-HoverButton2_A0BCE0 pb-[60px]">
-          <h2 className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded">View All Products</h2>
+          <h2 className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded">
+            View All Products
+          </h2>
         </div>
       </div>
     </div>

@@ -15,6 +15,7 @@ const ProductCommonLayout = ({
   desc = "flash sale",
   Arrows = false,
   Data = [],
+  Loading = false,
 }) => {
   let sliderRef = useRef(null);
   const settings = {
@@ -63,11 +64,17 @@ const ProductCommonLayout = ({
         <div>
           <div className="slider-container">
             <Slider ref={sliderRef} {...settings}>
-              {Data?.map((item, index) => (
-                <div>
-                  <ProductCard CategoryData={item ? item : {}} />
-                </div>
-              ))}
+              {Loading
+                ? [...new Array(10)].map((_, index) => (
+                    <div key={index}>
+                      <ProductCardSkeleton />
+                    </div>
+                  ))
+                : Data?.map((item, index) => (
+                    <div  key={item.key}>
+                      <ProductCard CategoryData={item ? item : {}} />
+                    </div>
+                  ))}
             </Slider>
           </div>
         </div>

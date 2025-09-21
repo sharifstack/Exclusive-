@@ -2,7 +2,7 @@ import React from "react";
 
 const ProductCardSkeleton = () => {
   return (
-    <div className="mt-10">
+    <div className="mt-10 ">
         <div className=" w-[270px] animate-pulse">
       {/* Top */}
       <div className="bg-Secondary_F5F5F5 rounded overflow-hidden">
