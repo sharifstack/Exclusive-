@@ -16,6 +16,7 @@ const ProductCommonLayout = ({
   Arrows = false,
   Data = [],
   Loading = false,
+  ViewMoreButton = false,
 }) => {
   let sliderRef = useRef(null);
   const settings = {
@@ -59,6 +60,14 @@ const ProductCommonLayout = ({
               </div>
             </div>
           )}
+
+          {ViewMoreButton && (
+            <div>
+              <h2 className="px-12 py-4 bg-Button2_DB4444 text-text_FAFAFA font-poppins text-base font-medium rounded cursor-pointer">
+                View All
+              </h2>
+            </div>
+          )}
         </div>
 
         <div>
@@ -71,7 +80,7 @@ const ProductCommonLayout = ({
                     </div>
                   ))
                 : Data?.map((item, index) => (
-                    <div  key={item.key}>
+                    <div key={item.key}>
                       <ProductCard CategoryData={item ? item : {}} />
                     </div>
                   ))}

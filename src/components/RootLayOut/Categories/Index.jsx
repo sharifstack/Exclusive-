@@ -48,7 +48,7 @@ export const browseCategory = [
   {
     item: 7,
     categoryName: "Earbuds",
-    icon: <BsEarbuds/>,
+    icon: <BsEarbuds />,
   },
 
   {
@@ -70,13 +70,19 @@ const Categories = () => {
       <div className="container">
         <ProductCommonLayout
           ProductCard={BrowseCategoryCard}
-          className="mt-[80px]"
+          className="mt-[70px]"
           title="Categories"
           desc="Browse By Category"
           Arrows={true}
           itemsPerSlide={6}
           Data={browseCategory}
         />
+
+        <div className="allProductsbtn  flex justify-center border-b border-HoverButton2_A0BCE0 pb-[70px]">
+          <h2 className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded">
+            View All Products
+          </h2>
+        </div>
       </div>
     </div>
   );
