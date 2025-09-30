@@ -85,4 +85,27 @@
     font-size: 12px;
     line-height: 16px;
   }
+
+  .bgshadow {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bgshadow::after {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    background-color: #d9d9d9;
+    box-shadow: 27px -7px 200px 107px rgba(217, 217, 217, 1);
+    -webkit-box-shadow: 27px -7px 200px 107px rgba(217, 217, 217, 1);
+    -moz-box-shadow: 27px -7px 200px 107px rgba(217, 217, 217, 1);
+
+    z-index: -1;
+  }
 }

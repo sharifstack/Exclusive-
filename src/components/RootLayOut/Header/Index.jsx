@@ -13,10 +13,16 @@ const Header = () => {
             </h2>
           </div>
           <div>
-            <select className="bg-transparent text-text_FAFAFA font-poppins text-sm font-normal">
-              <option value="En">English</option>
-              <option value="Bn">Bangla</option>
-              <option value="Ger">Germany</option>
+            <select className="bg-transparent text-text_FAFAFA font-poppins text-sm font-normal cursor-pointer">
+              <option value="En" className="bg-button_000000 ">
+                English
+              </option>
+              <option value="Bn" className="bg-button_000000">
+                Bangla
+              </option>
+              <option value="Ger" className="bg-button_000000">
+                Germany
+              </option>
             </select>
           </div>
         </div>

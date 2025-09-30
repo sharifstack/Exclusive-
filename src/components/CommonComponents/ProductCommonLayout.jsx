@@ -17,6 +17,7 @@ const ProductCommonLayout = ({
   Data = [],
   Loading = false,
   ViewMoreButton = false,
+  Rows = 1,
 }) => {
   let sliderRef = useRef(null);
   const settings = {
@@ -27,6 +28,7 @@ const ProductCommonLayout = ({
     slidesToScroll: 2,
     arrows: false,
     autoplay: true,
+    rows: Rows || 1,
   };
 
   const next = () => {
