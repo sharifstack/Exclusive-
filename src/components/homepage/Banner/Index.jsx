@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { category } from "../../../Database/category";
+import { category } from "../../../../Database/category";
 import "slick-carousel/slick/slick.css";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Slider from "react-slick";
-import Bannerimg from "../../assets/Banner/Banner1.jpg";
+import Bannerimg from "../../../assets/Banner/Banner1.jpg";
 
 const Banner = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
