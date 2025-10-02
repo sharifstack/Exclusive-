@@ -5,7 +5,7 @@ import { IoCartOutline, IoPerson, IoSearchOutline } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
 import { RiAccountCircle2Line, RiShoppingBag3Line } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const navItems = [
@@ -26,7 +26,11 @@ const Navbar = () => {
 
     {
       id: 4,
-      item: "SignUp",
+      item: "Sign Up",
+    },
+    {
+      id: 5,
+      item: "Products",
     },
   ];
   const [account, setAccount] = useState(false);
@@ -41,7 +45,7 @@ const Navbar = () => {
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="Logo">
-              <h2 className="font-inter font-bold text-2xl">Exclusive</h2>
+              <h2 className="font-inter font-bold text-2xl"><Link to={"/"}>Exclusive</Link></h2>
             </div>
             <div className="">
               <ul className="flex items-center gap-[48px]">

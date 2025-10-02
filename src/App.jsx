@@ -7,12 +7,17 @@ import {
 } from "react-router-dom";
 import Home from "./pages/Home/Index";
 import RootMainLayOut from "./components/RootLayOut/RootMainLayOut";
+import BreadCrumb from "./components/CommonComponents/BreadCrumb";
+import Products from "./pages/Products/Index";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
       <Route path="/" element={<RootMainLayOut />}>
         <Route index element={<Home />}></Route>
+        <Route path="/products" element={<Products />}></Route>
+        <Route path="/about" element={<BreadCrumb />}></Route>
       </Route>
     </Route>
   )
