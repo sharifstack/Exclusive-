@@ -8,7 +8,7 @@ import StarRating from "./starRating";
 const ProductCard = ({ CategoryData }) => {
   return (
     <div className="mt-10">
-      <div className="w-[270px] ">
+      <div className="w-[270px]">
         <div className="top bg-Secondary_F5F5F5 rounded overflow-hidden group cursor-pointer">
           <div className="relative">
             {CategoryData.discountPercentage && (
