@@ -13,15 +13,25 @@ const AllProducts = () => {
       setPage(index);
     }
   };
+
+  let showItems = (element) => {
+    let numberOfShowingItems = Number(element.target.value);
+    setItemsPerPage(numberOfShowingItems);
+  };
   //  Pagination   //
   return (
     <div className=" container w-[77%]">
       <div className="flex items-center gap-2 justify-end">
         <h2>Show :</h2>
-        <select name="" id="" className="bg-slate-100 px-4  py-1">
-          <option value="9">9</option>
-          <option value="18">18</option>
-          <option value="36">36</option>
+        <select
+          name=""
+          id=""
+          className="bg-slate-100 px-4  py-1"
+          onChange={showItems}
+        >
+          <option value="12">12</option>
+          <option value="24">24</option>
+          <option value="48">48</option>
         </select>
       </div>
 
@@ -35,6 +45,7 @@ const AllProducts = () => {
       </div>
       {/* All Products */}
 
+      {/* Pagination */}
       <div
         aria-label="Page navigation example"
         className="mt-20 flex justify-center "
@@ -72,6 +83,7 @@ const AllProducts = () => {
           </li>
         </ul>
       </div>
+      {/* Pagination */}
     </div>
   );
 };
