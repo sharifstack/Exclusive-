@@ -1,6 +1,6 @@
 import React from "react";
 
-const Heading = ({ title, desc }) => {
+const Heading = ({ title, desc = true }) => {
   return (
     <div className="flex flex-col gap-6">
       <div className="flex items-center gap-4">
@@ -10,9 +10,11 @@ const Heading = ({ title, desc }) => {
         </h3>
       </div>
       <div className="">
-        <h1 className="font-inter text-4xl font-semibold text-Text2_000000">
-          {desc ? desc : "Flash Sales"}
-        </h1>
+        {desc && (
+          <h1 className="font-inter text-4xl font-semibold text-Text2_000000">
+            {desc ? desc : "Deals & Offers"}
+          </h1>
+        )}
       </div>
     </div>
   );

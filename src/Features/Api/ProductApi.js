@@ -16,6 +16,9 @@ export const ProductApi = createApi({
     GetASingleProduct: builder.query({
       query: (id) => `/products/${id}`,
     }),
+    GetSimilarProducts: builder.query({
+      query: (categoryName) => `/products/category/${categoryName}`,
+    }),
   }),
 });
 
@@ -24,4 +27,5 @@ export const {
   useBestSellingProductsQuery,
   useCategoryListQuery,
   useGetASingleProductQuery,
+  useGetSimilarProductsQuery,
 } = ProductApi;

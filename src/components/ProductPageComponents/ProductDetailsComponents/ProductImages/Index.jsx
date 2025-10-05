@@ -63,7 +63,7 @@ const ProductImages = ({ image }) => {
           <div>
             <div className="bg-Secondary_F5F5F5">
               <InnerImageZoom
-                className="w-full h-[600px] object-cover"
+                className="w-full h-[650px] object-"
                 src={initianlImage}
               />
             </div>

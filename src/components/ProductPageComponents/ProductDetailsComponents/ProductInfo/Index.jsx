@@ -4,7 +4,17 @@ import { LuMinus, LuPlus, LuRefreshCcw } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
 import { TbTruckDelivery } from "react-icons/tb";
 
-const ProductInfo = () => {
+const ProductInfo = ({ productAllDetails }) => {
+  const {
+    title,
+    description,
+    price,
+    rating,
+    stock,
+    reviews,
+    shippingInformation,
+  } = productAllDetails || {};
+
   const sizes = [
     {
       id: 1,
@@ -32,7 +42,7 @@ const ProductInfo = () => {
     <div className="w-2/5">
       <div>
         <div className="title font-inter font-semibold text-2xl text-Text2_000000">
-          Havic HV G-92 Gamepad
+          {productAllDetails?.title}
         </div>
 
         <div className="flex  items-center gap-4 py-4">
@@ -41,7 +51,7 @@ const ProductInfo = () => {
           </div>
           <div className="reviews">
             <h4 className="font-poppins font-normal text-base text-Text2_000000">
-              (150 Reviews)
+              (`{productAllDetails?.rating} Reviews`)
             </h4>
           </div>
           <div>
@@ -49,20 +59,18 @@ const ProductInfo = () => {
           </div>
           <div className="inStock">
             <h4 className="font-poppins font-normal text-base text-Button1_00FF66">
-              In Stock
+              {productAllDetails?.stock} In Stock
             </h4>
           </div>
         </div>
         <div className="price">
           <h2 className="font-inter font-normal text-2xl text-Text2_000000">
-            $192
+            ${productAllDetails?.price}
           </h2>
         </div>
         <div className="desc w-[385px] border-b border-Text2_000000 py-6">
           <p className="font-poppins font-normal text-base text-Text2_000000  ">
-            PlayStation 5 Controller Skin High quality vinyl with air channel
-            adhesive for easy bubble free install & mess free removal Pressure
-            sensitive.
+            {productAllDetails?.description}
           </p>
         </div>
 
@@ -133,7 +141,7 @@ const ProductInfo = () => {
                     Free Delivery
                   </h4>
                   <p className="font-poppins font-medium text-xs text-Text2_000000 underline">
-                    Enter your postal code for Delivery Availability
+                    {productAllDetails?.shippingInformation}
                   </p>
                 </div>
               </div>
@@ -150,7 +158,8 @@ const ProductInfo = () => {
                     Return Delivery
                   </h4>
                   <p className="font-poppins font-medium text-xs text-Text2_000000 flex items-center">
-                    Free 30 Days Delivery Returns. <p className="underline">Details</p>
+                    Free 30 Days Delivery Returns.
+                    <p className="underline">Details</p>
                   </p>
                 </div>
               </div>
