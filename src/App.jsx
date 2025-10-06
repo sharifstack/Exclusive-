@@ -10,6 +10,7 @@ import RootMainLayOut from "./components/RootLayOut/RootMainLayOut";
 import BreadCrumb from "./components/CommonComponents/BreadCrumb";
 import Products from "./pages/Products/Index";
 import ProductDetails from "./pages/ProductDetails/Index";
+import Login from "./pages/Login/Index";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
         <Route index element={<Home />}></Route>
         <Route path="/products" element={<Products />}></Route>
         <Route path="/productdetails/:id" element={<ProductDetails />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<BreadCrumb />}></Route>
       </Route>
     </Route>
