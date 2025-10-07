@@ -26,7 +26,7 @@ const Navbar = () => {
 
     {
       id: 4,
-      item: "Sign Up",
+      item: "SignUp",
     },
     {
       id: 5,
