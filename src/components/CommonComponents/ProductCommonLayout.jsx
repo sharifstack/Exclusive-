@@ -11,12 +11,13 @@ const ProductCommonLayout = ({
   ProductCard = () => <ProductCardSkeleton />,
   timeStamp = false,
   timeOffer = 0,
-  title = "today's",
-  desc = "flash sale",
+  title = "flash sale",
+  desc = false,
   Arrows = false,
   Data = [],
   Loading = false,
   ViewMoreButton = false,
+  ButtonText = "View All",
   Rows = 1,
 }) => {
   let sliderRef = useRef(null);
@@ -66,7 +67,7 @@ const ProductCommonLayout = ({
           {ViewMoreButton && (
             <div>
               <h2 className="px-12 py-4 bg-Button2_DB4444 text-text_FAFAFA font-poppins text-base font-medium rounded cursor-pointer">
-                View All
+                {ButtonText ? ButtonText : "View All"}
               </h2>
             </div>
           )}

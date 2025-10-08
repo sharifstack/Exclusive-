@@ -6,6 +6,7 @@ import appstore from "../../../assets/Footer/appstore.png";
 import { RiFacebookLine, RiLinkedinLine } from "react-icons/ri";
 import { FaInstagram } from "react-icons/fa";
 import { LuTwitter } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -62,7 +63,7 @@ const Footer = () => {
                 My Account
               </p>
               <p className="font-poppins font-normal text-base text-text_FAFAFA mb-4">
-                Login / Register
+                <Link to={"/login"}> Login / Register</Link>
               </p>
               <p className="font-poppins font-normal text-base text-text_FAFAFA mb-4">
                 Cart
@@ -104,26 +105,14 @@ const Footer = () => {
               </p>
               <div className="links flex gap-2">
                 <div className="left">
-                  <img
-                    className=""
-                    src={qrcode}
-                    alt={qrcode}
-                  />
+                  <img className="" src={qrcode} alt={qrcode} />
                 </div>
                 <div className="right w-1/2">
                   <div className="top  mb-2">
-                    <img
-                      className=""
-                      src={playstore}
-                      alt={playstore}
-                    />
+                    <img className="" src={playstore} alt={playstore} />
                   </div>
                   <div className="bottom">
-                    <img
-                      className=""
-                      src={appstore}
-                      alt={appstore}
-                    />
+                    <img className="" src={appstore} alt={appstore} />
                   </div>
                 </div>
               </div>
@@ -148,7 +137,10 @@ const Footer = () => {
         </div>
       </div>
       <div className="text-center border-t border-white/10 pt-4 pb-6">
-        <p className="text-Primary_FFFFFF opacity-30"> &copy; Copyright Sharif 2025. All right reserved</p>
+        <p className="text-Primary_FFFFFF opacity-30">
+          {" "}
+          &copy; Copyright Sharif 2025. All right reserved
+        </p>
       </div>
     </div>
   );

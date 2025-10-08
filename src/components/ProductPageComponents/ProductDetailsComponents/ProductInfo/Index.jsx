@@ -51,7 +51,7 @@ const ProductInfo = ({ productAllDetails }) => {
           </div>
           <div className="reviews">
             <h4 className="font-poppins font-normal text-base text-Text2_000000">
-              (`{productAllDetails?.rating} Reviews`)
+              ({productAllDetails?.rating} Reviews)
             </h4>
           </div>
           <div>
@@ -68,8 +68,8 @@ const ProductInfo = ({ productAllDetails }) => {
             ${productAllDetails?.price}
           </h2>
         </div>
-        <div className="desc w-[385px] border-b border-Text2_000000 py-6">
-          <p className="font-poppins font-normal text-base text-Text2_000000  ">
+        <div className="desc w-[385px] border-b border-Text2_000000  py-6">
+          <p className="font-poppins font-normal text-xs text-Text2_000000  ">
             {productAllDetails?.description}
           </p>
         </div>
