@@ -14,6 +14,8 @@ import Login from "./pages/Login/Index";
 import SignUp from "./pages/SignUp/Index";
 import Wishlist from "./pages/Wishlist/Index";
 import Cart from "./pages/Cart/Index";
+import Error from "./pages/Error/Index";
+import MyAccount from "./pages/MyAccount/Index";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +28,8 @@ const router = createBrowserRouter(
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/wishlist" element={<Wishlist />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/error" element={<Error />}></Route>
+        <Route path="/account" element={<MyAccount />}></Route>
         <Route path="/about" element={<BreadCrumb />}></Route>
       </Route>
     </Route>

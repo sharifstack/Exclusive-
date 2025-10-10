@@ -51,7 +51,7 @@ const CartComponents = () => {
                 <div className="relative flex items-center justify-center">
                   <input
                     type="text"
-                    className="border border-[rgba(0,0,0,0.4)] rounded  w-[72px] py-1.5 pl-3 pr-11"
+                    className="border border-[rgba(0,0,0,0.4)] rounded  w-[72px] py-1.5 pl-3 pr-10"
                   />
 
                   <span className="absolute left-[55%] top-0 -translate-x-[55%]">

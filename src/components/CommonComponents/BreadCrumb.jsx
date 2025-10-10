@@ -1,14 +1,14 @@
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
 
-const BreadCrumb = () => {
+const BreadCrumb = ({ className }) => {
   const { pathname } = useLocation();
   let pathNameArr = pathname.split("/").filter((path) => path);
   let breadCrumbPath = "";
   console.log(pathNameArr);
 
   return (
-    <div className="my-20">
+    <div className={`my-20 ${className}`}>
       <div className="container">
         <div className="flex items-end gap-3">
           <div className="inline-block0">

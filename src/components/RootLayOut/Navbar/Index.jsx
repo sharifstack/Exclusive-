@@ -45,7 +45,9 @@ const Navbar = () => {
         <div className="container">
           <div className="flex items-center justify-between">
             <div className="Logo">
-              <h2 className="font-inter font-bold text-2xl"><Link to={"/"}>Exclusive</Link></h2>
+              <h2 className="font-inter font-bold text-2xl">
+                <Link to={"/"}>Exclusive</Link>
+              </h2>
             </div>
             <div className="">
               <ul className="flex items-center gap-[48px]">
@@ -102,7 +104,7 @@ const Navbar = () => {
                         <LuUser />
                       </span>
                       <h2 className="text-xl font-poppins font-normal ">
-                        Manage My Account
+                        <Link to={"/account"}>Manage My Account</Link>
                       </h2>
                     </div>
 
