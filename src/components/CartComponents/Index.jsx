@@ -98,7 +98,7 @@ const CartComponents = () => {
             </div>
           </div>
 
-          <div className="border-2 border-Text2_000000 rounded w-2/5 py-8 px-6">
+          <div className="TotalCalculate  border-2 border-Text2_000000 rounded w-2/5 py-8 px-6">
             <div>
               <h4 className="font-poppins font-medium text-xl text-Text2_000000  pb-6">
                 Cart Total

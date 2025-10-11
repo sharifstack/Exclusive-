@@ -12,25 +12,30 @@ const Navbar = () => {
     {
       id: 1,
       item: "Home",
+      path: "/",
     },
 
     {
       id: 2,
       item: "Contact",
+      path: "/contact",
     },
 
     {
       id: 3,
       item: "About",
+      path: "/about",
     },
 
     {
       id: 4,
       item: "SignUp",
+      path: "/signup",
     },
     {
       id: 5,
       item: "Products",
+      path: "/products",
     },
   ];
   const [account, setAccount] = useState(false);
@@ -54,12 +59,12 @@ const Navbar = () => {
                 {navItems?.map((nav) => (
                   <li key={nav.id} className="menuHover">
                     <NavLink
-                      to={`/${nav.item}`}
+                      to={`${nav.path}`}
                       className={({ isPending, isActive }) =>
                         isPending
                           ? "text-Text2_000000 font-poppins text-[16px] font-normal"
                           : isActive
-                          ? "text-red-500 font-poppins text-[16px] font-normal"
+                          ? "border-b border-HoverButton2_A0BCE0 font-poppins text-[16px] font-normal"
                           : "text-Text2_000000 font-poppins text-[16px] font-normal"
                       }
                     >
@@ -82,13 +87,17 @@ const Navbar = () => {
               </div>
 
               <div className="icons flex items-center gap-5 ">
-                <span className="cursor-pointer text-button_000000 text-[30px]">
-                  <CiHeart />
-                </span>
+                <Link to={"/wishlist"}>
+                  <span className="cursor-pointer text-button_000000 text-[30px]">
+                    <CiHeart />
+                  </span>
+                </Link>
 
-                <span className="cursor-pointer cartoffer text-button_000000 text-[30px]">
-                  <IoCartOutline />
-                </span>
+                <Link to={"/cart"}>
+                  <span className="cursor-pointer cartoffer text-button_000000 text-[30px]">
+                    <IoCartOutline />
+                  </span>
+                </Link>
 
                 <span
                   className="cursor-pointer  text-Primary_FFFFFF  text-xl p-2 bg-Secondary2_DB4444 rounded-full relative"
@@ -113,7 +122,7 @@ const Navbar = () => {
                         <RiShoppingBag3Line />
                       </span>
                       <h2 className="text-xl font-poppins font-normal">
-                        My Order
+                        <Link to={"/checkout"}> My Order</Link>
                       </h2>
                     </div>
 

@@ -108,4 +108,14 @@
 
     z-index: -1;
   }
+
+  .checkboxMark {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: var(--Primary_FFFFFF);
+    cursor: pointer;
+    border-radius: 4px;
+    border: 0.5px solid rgba(0, 0, 0, 0.491)
+  }
 }
