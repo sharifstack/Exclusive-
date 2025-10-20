@@ -3,6 +3,8 @@ import BreadCrumb from "../../components/CommonComponents/BreadCrumb";
 import OurStory from "../../components/AboutComponents/OurStory/Index";
 import Engagements from "../../components/AboutComponents/Engagements/Index";
 import Founders from "../../components/AboutComponents/Founders/Index";
+import Services from "../../components/homepage/Services/Index";
+
 
 const About = () => {
   return (
@@ -11,6 +13,7 @@ const About = () => {
       <OurStory />
       <Engagements/>
       <Founders/>
+      <Services/>
     </div>
   );
 };

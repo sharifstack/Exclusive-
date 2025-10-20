@@ -18,6 +18,7 @@ import Error from "./pages/Error/Index";
 import MyAccount from "./pages/MyAccount/Index";
 import { CheckOut } from "./pages/CheckOut/Index";
 import About from "./pages/About/Index";
+import Contact from "./pages/Contact/Index";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         <Route path="/error" element={<Error />}></Route>
         <Route path="/account" element={<MyAccount />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/contact" element={<Contact />}></Route>
       </Route>
     </Route>
   )

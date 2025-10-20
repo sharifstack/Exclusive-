@@ -87,7 +87,7 @@ const Founders = () => {
             height: "16px",
             color: "#ffffff",
             background: "#DB4444",
-            border: "3px #000000 solid",
+            border: "3px #ffffff80 solid",
             borderRadius: "50%",
             marginRight: "12px",
             cursor: "pointer",
