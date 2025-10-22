@@ -4,6 +4,8 @@ import "slick-carousel/slick/slick.css";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Slider from "react-slick";
 import Bannerimg from "../../../assets/Banner/Banner1.jpg";
+import "flowbite";
+import { IoMenuSharp } from "react-icons/io5";
 
 const Banner = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
@@ -62,42 +64,46 @@ const Banner = () => {
   };
   return (
     <div>
-      <div className="container">
-        <div className="flex">
-          <div className="left w-[23%] border-r border-r-Text2_000000/80 cursor-pointer">
-            <ul className="pt-10">
-              {category.map((item) => (
-                <div className="flex items-center  justify-between hover:bg-Text1_7D8184 hover:text-text_FAFAFA hover:scale-105 transition-all origin-right duration-200 ">
-                  <li className="cursor-pointer   font-poppins text-base font-normal py-3">
-                    {item.category}
-                  </li>
+      <div className="ForLargeDevice">
+        <div className="container">
+          <div className="flex">
+            <div className="left ForLargeDevice w-[23%] border-r border-r-Text2_000000/80 cursor-pointer hidden sm:block">
+              <ul className="pt-10">
+                {category.map((item) => (
+                  <div className="flex items-center justify-between hover:bg-Text1_7D8184 hover:text-text_FAFAFA hover:scale-105 transition-all origin-right duration-200 ">
+                    <li className="cursor-pointer  font-poppins text-base font-normal py-3">
+                      {item.category}
+                    </li>
 
-                  {item.subCategory && (
-                    <span className="pr-4 text-xl">
-                      <MdOutlineKeyboardArrowRight />
-                    </span>
-                  )}
-                </div>
-              ))}
-            </ul>
-          </div>
-          <div className="right w-[77%] pt-10 pl-[45px]">
-            <div className="slider-container">
-              <Slider {...settings}>
-                {[...new Array(5)].map((_, index) => (
-                  <div>
-                    <img
-                      className="w-full h-full object-cover"
-                      src={Bannerimg}
-                      alt={Bannerimg}
-                    />
+                    {item.subCategory && (
+                      <span className="pr-4 text-xl">
+                        <MdOutlineKeyboardArrowRight />
+                      </span>
+                    )}
                   </div>
                 ))}
-              </Slider>
+              </ul>
+            </div>
+            <div className="right w-[77%] pt-10 pl-[45px]">
+              <div className="slider-container">
+                <Slider {...settings}>
+                  {[...new Array(5)].map((_, index) => (
+                    <div>
+                      <img
+                        className="w-full h-full object-cover"
+                        src={Bannerimg}
+                        alt={Bannerimg}
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      
     </div>
   );
 };
