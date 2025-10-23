@@ -40,10 +40,10 @@ const ProductCommonLayout = ({
   };
 
   return (
-    <div className={`mt-[140px] mb-[60px] ${className}`}>
+    <div className={`mt-10 sm:mt-[140px] mb-[60px] ${className}`}>
       <div className="container">
         <div className="flex items-end justify-between">
-          <div className="flex gap-10 items-end">
+          <div className="sm:flex sm:gap-10 sm:items-end">
             <Heading title={title} desc={desc} />
             {timeStamp && <Timer timeOffer={timeOffer} />}
           </div>

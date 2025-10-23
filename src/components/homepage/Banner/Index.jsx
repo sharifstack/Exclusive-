@@ -16,7 +16,41 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-
+    responsive: [
+      {
+        breakpoint: 480, // mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600, // slightly larger mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 640, // small tablet
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 1024, // desktop
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          dots: true,
+        },
+      },
+    ],
     appendDots: (dots) => (
       <div
         style={{
@@ -84,7 +118,7 @@ const Banner = () => {
                 ))}
               </ul>
             </div>
-            <div className="right w-[77%] pt-10 pl-[45px]">
+            <div className="right w-full sm:w-[77%] pt-5 sm:pt-10 sm:pl-[45px]">
               <div className="slider-container">
                 <Slider {...settings}>
                   {[...new Array(5)].map((_, index) => (
@@ -102,8 +136,6 @@ const Banner = () => {
           </div>
         </div>
       </div>
-
-      
     </div>
   );
 };
