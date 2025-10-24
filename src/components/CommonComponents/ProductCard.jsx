@@ -3,7 +3,7 @@ import p1 from "../../assets/Products/p1.png";
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoEyeOutline } from "react-icons/io5";
 import MakeDiscount from "../../helpers/hooks/MakeDiscount";
-import StarRating from "./starRating";
+import StarRating from "./StarRating";
 import { Link } from "react-router-dom";
 
 const ProductCard = ({ CategoryData, className }) => {
