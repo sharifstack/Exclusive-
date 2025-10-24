@@ -3,7 +3,7 @@ import ProductCommonLayout from "../../CommonComponents/ProductCommonLayout";
 import img1 from "../../../assets/Arrival/arrival1.png";
 import img2 from "../../../assets/Arrival/arrival2.png";
 import img3 from "../../../assets/Arrival/arrival3.png";
-import img4 from "../../../assets/Arrival/arrival4.png";
+import img4 from "../../../assets/Arrival/Arrival4.png";
 
 const NewArrival = () => {
   return (
