@@ -6,7 +6,6 @@ import bkash from "../../assets/Checkout/bkash.png";
 import visa from "../../assets/Checkout/visa.png";
 import mastercard from "../../assets/Checkout/mastercard.png";
 import nagad from "../../assets/Checkout/nagad.png";
-import { NavLink } from "react-router-dom";
 
 export const CheckOut = () => {
   const [check, setCheck] = useState(false);
