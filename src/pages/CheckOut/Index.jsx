@@ -4,7 +4,7 @@ import { FaCheck } from "react-icons/fa";
 import productimg from "../../assets/cart/cart.png";
 import bkash from "../../assets/Checkout/bkash.png";
 import visa from "../../assets/Checkout/visa.png";
-import mastercard from "../../assets/Checkout/mastercard.png";
+import mastercard from "../../assets/Checkout/Mastercard.png";
 import nagad from "../../assets/Checkout/nagad.png";
 
 export const CheckOut = () => {
