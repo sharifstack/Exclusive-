@@ -1,5 +1,5 @@
 import React from "react";
-import StarRating from "../../../CommonComponents/starRating";
+import StarRating from "../../../CommonComponents/StarRating";
 import { LuMinus, LuPlus, LuRefreshCcw } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -166,7 +166,7 @@ const ProductInfo = ({ productAllDetails }) => {
             </div>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
   );
 };
