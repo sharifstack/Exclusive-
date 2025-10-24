@@ -25,11 +25,44 @@ const ProductCommonLayout = ({
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: itemsPerSlide || 5,
+    slidesToShow: itemsPerSlide || 1,
     slidesToScroll: 2,
     arrows: false,
     autoplay: true,
     rows: Rows || 1,
+    responsive: [
+      {
+        breakpoint: 480, // mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 600, // slightly larger mobile
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 640, // small tablet
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1024, // desktop
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+    ],
   };
 
   const next = () => {
@@ -40,25 +73,27 @@ const ProductCommonLayout = ({
   };
 
   return (
-    <div className={`mt-10 sm:mt-[140px] mb-[60px] ${className}`}>
+    <div className={`mt-10 sm:mt-[140px] mb-0 sm:mb-[60px] ${className}`}>
       <div className="container">
-        <div className="flex items-end justify-between">
+        <div className="sm:flex sm:items-end sm:justify-between">
           <div className="sm:flex sm:gap-10 sm:items-end">
             <Heading title={title} desc={desc} />
-            {timeStamp && <Timer timeOffer={timeOffer} />}
+            <div className="my-2 sm:my-0 flex sm:block justify-center sm:justify-normal">
+              {timeStamp && <Timer timeOffer={timeOffer} />}
+            </div>
           </div>
 
           {Arrows && (
             <div className="flex items-center gap-3 cursor-pointer">
-              <div onClick={previous} className="">
-                <span className="bg-Secondary_F5F5F5 block rounded-full p-4 ">
-                  <GoArrowLeft className="w-[40px] h-[40px] text-button_000000" />
+              <div onClick={previous} className="hidden sm:flex">
+                <span className="bg-Secondary_F5F5F5 block rounded-full p-4 border sm:border-0">
+                  <GoArrowLeft className="sm:w-[40px] sm:h-[40px] text-button_000000" />
                 </span>
               </div>
 
-              <div onClick={next}>
-                <span className="bg-Secondary_F5F5F5 block rounded-full p-4 ">
-                  <GoArrowRight className="w-[40px] h-[40px] text-button_000000" />
+              <div onClick={next} className="hidden sm:flex">
+                <span className="bg-Secondary_F5F5F5 block rounded-full p-4 border sm:border-0">
+                  <GoArrowRight className="sm:w-[40px] sm:h-[40px] text-button_000000" />
                 </span>
               </div>
             </div>

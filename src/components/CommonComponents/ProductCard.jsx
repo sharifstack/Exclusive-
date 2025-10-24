@@ -10,8 +10,8 @@ const ProductCard = ({ CategoryData, className }) => {
   return (
     <div>
       <Link to={`/productdetails/${CategoryData.id}`}>
-        <div className={`mt-10  ${className}`}>
-          <div className="w-[270px]">
+        <div className={`m-2 sm:mt-10  ${className}`}>
+          <div className="w-full sm:w-[270px]">
             <div className="top bg-Secondary_F5F5F5 rounded overflow-hidden group cursor-pointer">
               <div className="relative">
                 {CategoryData.discountPercentage && (
