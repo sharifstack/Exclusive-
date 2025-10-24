@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Formik, useFormik } from "formik";
 import loginimg from "../../assets/login/login.gif";
-import { loginValidation } from "../../Validation/LoginValidation";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
+import { loginValidation } from "../../Validation/loginValidation";
 
 const Login = () => {
   const [eye, setEye] = useState(false);
