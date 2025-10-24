@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import img from "../../../assets/Enhance/Enhance.png";
 
-const EnhanceExperience = ({timeleft = 1}) => {
+const EnhanceExperience = ({ timeleft = 1 }) => {
   const [time, setTime] = useState(timeleft * 24 * 60 * 60 * 1000);
 
   useEffect(() => {
@@ -28,8 +28,8 @@ const EnhanceExperience = ({timeleft = 1}) => {
   //destructing from formatTime
   const { days, hours, minutes, seconds } = formatTime(time);
   return (
-    <div className="mt-[140px]  mb-[71px]">
-      <div className="container">
+    <div className="sm:mt-[140px]  sm:mb-[71px] hidden sm:flex">
+      <div className="container ">
         <div className="flex">
           <div className="left w-[45%] bg-Text2_000000 pt-[37px] pl-[56px]">
             <div className="">
@@ -51,7 +51,7 @@ const EnhanceExperience = ({timeleft = 1}) => {
 
                 <div className="bg-Primary_FFFFFF flex flex-col items-center justify-center w-[62px] h-[62px] rounded-full">
                   <h5 className="text-Text2_000000 font-poppins font-semibold text-base">
-                   {hours && hours}
+                    {hours && hours}
                   </h5>
                   <h4 className="text-Text2_000000 font-poppins font-normal text-[11px]">
                     Hours

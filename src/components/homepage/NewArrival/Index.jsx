@@ -10,15 +10,15 @@ const NewArrival = () => {
     <div>
       <div className="container">
         <ProductCommonLayout title="Featured" desc="New Arrival" />
-        <div className="flex gap-8">
-          <div className="left w-1/2">
+        <div className="sm:flex sm:gap-8">
+          <div className="left sm:w-1/2 mb-2 sm:mb-0">
             <img
               className="w-full h-full object-cover cursor-pointer"
               src={img1}
               alt={img1}
             />
           </div>
-          <div className="right w-1/2 flex  flex-col gap-10 ">
+          <div className="right sm:w-1/2 flex  flex-col gap-2 sm:gap-10 ">
             <div className="top">
               <img
                 className="w-full h-full object-cover cursor-pointer"
@@ -26,7 +26,7 @@ const NewArrival = () => {
                 alt={img2}
               />
             </div>
-            <div className="bottom flex gap-10">
+            <div className="bottom flex gap-2 sm:gap-10">
               <div className="left w-full">
                 <img
                   className="w-full h-full object-cover cursor-pointer"

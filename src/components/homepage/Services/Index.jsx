@@ -28,9 +28,9 @@ const Services = () => {
   ];
 
   return (
-    <div className="my-[140px]">
+    <div className="my-10 sm:my-[140px]">
       <div className="container">
-        <div className="flex items-center justify-center gap-[88px]">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-11 sm:gap-[88px]">
           {ourinfo?.map((item) => (
             <div className="flex flex-col items-center">
               <span className="text-text_FAFAFA bg-button_000000 rounded-full p-2 border-[12px] border-[rgba(180,180,180,0.83)] mb-6">

@@ -100,7 +100,7 @@ const ProductCommonLayout = ({
           )}
 
           {ViewMoreButton && (
-            <div>
+            <div className="hidden sm:flex">
               <h2 className="px-12 py-4 bg-Button2_DB4444 text-text_FAFAFA font-poppins text-base font-medium rounded cursor-pointer">
                 {ButtonText ? ButtonText : "View All"}
               </h2>

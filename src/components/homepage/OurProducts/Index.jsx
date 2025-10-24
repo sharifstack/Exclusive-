@@ -20,9 +20,11 @@ const OurProducts = () => {
       />
 
       <div className="allProductsbtn  flex justify-center">
-        <button className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA rounded">
-          View All Products
-        </button>
+         <div className="allProductsbtn  flex justify-center pb-6 sm:pb-[60px]">
+          <h2 className="bg-Button2_DB4444 font-poppins text-sm sm:text-base font-medium py-4 px-6 sm:px-12 text-text_FAFAFA cursor-pointer rounded">
+            View All Products
+          </h2>
+        </div>
       </div>
     </div>
   );
