@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProductCardSkeleton from "../../helpers/ProductCardSkeleton";
 import Timer from "../../Features/Timer";
 import Heading from "./Heading";
@@ -20,45 +20,41 @@ const ProductCommonLayout = ({
   Loading = false,
   ViewMoreButton = false,
   ButtonText = "View All",
-  Rows = 1,
 }) => {
   let sliderRef = useRef(null);
+  const [slidesToShow, setSlidesToShow] = useState(itemsPerSlide || 5);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+
+      if (width < 480) {
+        setSlidesToShow(1);
+      } else if (width < 768) {
+        setSlidesToShow(2);
+      } else if (width < 1024) {
+        setSlidesToShow(2);
+      } else if (width < 1280) {
+        setSlidesToShow(4);
+      } else {
+        setSlidesToShow(itemsPerSlide || 5);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [itemsPerSlide]);
 
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: itemsPerSlide || 5,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    rows: Rows || 1,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
   };
   const next = () => {
     sliderRef.current.slickNext();

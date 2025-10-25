@@ -114,7 +114,7 @@ const Navbar = () => {
                 </span>
 
                 {account && (
-                  <div className="bg-[#00000083] rounded absolute left-full top-full -translate-x-full p-6 flex flex-col  gap-y-[13px] w-[60%] cursor-pointer z-40  backdrop-blur-md ">
+                  <div className="bg-[#00000083] flex rounded absolute left-full top-full -translate-x-full p-6 flex-col gap-y-[13px] w-[60%] cursor-pointer z-40  backdrop-blur-md">
                     <div className="flex items-center text-text_FAFAFA  hover:scale-110 hover:font-bold transition-all duration-300 ">
                       <span className="text-3xl p-2 mr-4 ">
                         <LuUser />
@@ -168,7 +168,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="ForPhone flex sm:hidden py-1 border">
+      <div className="ForPhone flex sm:hidden py-1 border ">
         <div className="container">
           <div className="flex LogoAndDrawer items-center justify-between">
             <div className="flex items-end gap-2">

@@ -1,16 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { category } from "../../../../Database/category";
 import "slick-carousel/slick/slick.css";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import Slider from "react-slick";
 import Bannerimg from "../../../assets/Banner/Banner1.jpg";
 import "flowbite";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { IoMenuSharp } from "react-icons/io5";
 
 const Banner = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   var settings = {
-    dots: true,
+    dots: !isMobile,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -18,36 +29,29 @@ const Banner = () => {
     arrows: false,
     responsive: [
       {
-        breakpoint: 480, // mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 600, // slightly larger mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: false,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 640, // small tablet
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 1024, // desktop
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          infinite: true,
           dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          dots: false,
         },
       },
     ],
@@ -62,36 +66,43 @@ const Banner = () => {
           borderRadius: "10px",
         }}
       >
-        <ul style={{ margin: "0px", display: "flex" }}> {dots} </ul>
+        <ul
+          style={{ margin: "0px", display: "flex", justifyContent: "center" }}
+        >
+          {" "}
+          {dots}{" "}
+        </ul>
       </div>
     ),
     customPaging: (i) =>
-      i == currentSlide ? (
-        <div
-          style={{
-            width: "16px",
-            height: "16px",
-            color: "#ffffff",
-            background: "#DB4444",
-            border: "3px white solid",
-            borderRadius: "50%",
-            marginRight: "12px",
-            cursor: "pointer",
-          }}
-        ></div>
-      ) : (
-        <div
-          style={{
-            width: "16px",
-            height: "16px",
-            background: "#FFFFFF",
-            opacity: "0.5",
-            borderRadius: "50%",
-            marginRight: "12px",
-            cursor: "pointer",
-          }}
-        ></div>
-      ),
+      !isMobile ? (
+        i === currentSlide ? (
+          <div
+            style={{
+              width: "16px",
+              height: "16px",
+              color: "#ffffff",
+              background: "#DB4444",
+              border: "3px white solid",
+              borderRadius: "50%",
+              marginRight: "12px",
+              cursor: "pointer",
+            }}
+          ></div>
+        ) : (
+          <div
+            style={{
+              width: "16px",
+              height: "16px",
+              background: "#FFFFFF",
+              opacity: "0.5",
+              borderRadius: "50%",
+              marginRight: "12px",
+              cursor: "pointer",
+            }}
+          ></div>
+        )
+      ) : null,
     afterChange: function (currentSlide) {
       setcurrentSlide(currentSlide);
     },
