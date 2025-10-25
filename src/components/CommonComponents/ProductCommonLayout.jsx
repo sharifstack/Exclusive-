@@ -3,6 +3,8 @@ import ProductCardSkeleton from "../../helpers/ProductCardSkeleton";
 import Timer from "../../Features/Timer";
 import Heading from "./Heading";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 const ProductCommonLayout = ({
@@ -21,50 +23,43 @@ const ProductCommonLayout = ({
   Rows = 1,
 }) => {
   let sliderRef = useRef(null);
-  const settings = {
+
+  var settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: itemsPerSlide || 1,
-    slidesToScroll: 2,
+    slidesToShow: itemsPerSlide || 5,
+    slidesToScroll: 1,
     arrows: false,
     autoplay: true,
     rows: Rows || 1,
     responsive: [
       {
-        breakpoint: 480, // mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-          arrows: false,
-        },
-      },
-      {
-        breakpoint: 600, // slightly larger mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 640, // small tablet
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
+          infinite: true,
+          dots: true,
         },
       },
       {
-        breakpoint: 1024, // desktop
+        breakpoint: 600,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToShow: 1,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
         },
       },
     ],
   };
-
   const next = () => {
     sliderRef.current.slickNext();
   };
@@ -109,7 +104,7 @@ const ProductCommonLayout = ({
         </div>
 
         <div>
-          <div className="slider-container">
+          <div style={{ width: "100%" }} className="slider-container ">
             <Slider ref={sliderRef} {...settings}>
               {Loading
                 ? [...new Array(10)].map((_, index) => (

@@ -119,7 +119,7 @@ const Navbar = () => {
                       <span className="text-3xl p-2 mr-4 ">
                         <LuUser />
                       </span>
-                      <h2 className="text-xl font-poppins font-normal ">
+                      <h2 className="text-[18px] font-poppins font-normal ">
                         <Link to={"/account"}>Manage My Account</Link>
                       </h2>
                     </div>
@@ -128,7 +128,7 @@ const Navbar = () => {
                       <span className="text-3xl p-2 mr-4">
                         <RiShoppingBag3Line />
                       </span>
-                      <h2 className="text-xl font-poppins font-normal">
+                      <h2 className="text-[18px] font-poppins font-normal">
                         <Link to={"/checkout"}> My Order</Link>
                       </h2>
                     </div>
@@ -137,7 +137,7 @@ const Navbar = () => {
                       <span className="text-3xl p-2  mr-4">
                         <ImCancelCircle />
                       </span>
-                      <h2 className="text-xl font-poppins font-normal">
+                      <h2 className="text-[18px] font-poppins font-normal">
                         My Cancellations
                       </h2>
                     </div>
@@ -146,7 +146,7 @@ const Navbar = () => {
                       <span className="text-3xl p-2  mr-4">
                         <CiStar />
                       </span>
-                      <h2 className="text-xl font-poppins font-normal">
+                      <h2 className="text-[18px] font-poppins font-normal">
                         My Reviews
                       </h2>
                     </div>
@@ -155,7 +155,7 @@ const Navbar = () => {
                       <span className="text-3xl p-2  mr-4">
                         <TbLogout2 />
                       </span>
-                      <h2 className="text-xl font-poppins font-normal ">
+                      <h2 className="text-[18px] font-poppins font-normal ">
                         Logout
                       </h2>
                     </div>

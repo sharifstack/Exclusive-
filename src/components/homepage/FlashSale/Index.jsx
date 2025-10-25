@@ -18,6 +18,7 @@ const FlashSale = () => {
           desc="Flash Sales"
           Data={data?.products}
           Loading={isLoading}
+          
         />
 
         <div className="allProductsbtn  flex justify-center border-b border-HoverButton2_A0BCE0 pb-6 sm:pb-[60px]">

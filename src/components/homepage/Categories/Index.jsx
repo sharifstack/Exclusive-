@@ -74,7 +74,7 @@ const Categories = () => {
           title="Categories"
           desc="Browse By Category"
           Arrows={true}
-          itemsPerSlide={1}
+          itemsPerSlide={5}
           Data={browseCategory}
         />
 
