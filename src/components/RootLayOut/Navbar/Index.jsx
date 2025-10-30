@@ -99,7 +99,6 @@ const Navbar = () => {
                     <CiHeart />
                   </span>
                 </Link>
-
                 <Link to={"/cart"}>
                   <span className="cursor-pointer cartoffer text-button_000000 text-[30px]">
                     <IoCartOutline />
@@ -112,7 +111,6 @@ const Navbar = () => {
                 >
                   <LuUser />
                 </span>
-
                 {account && (
                   <div className="bg-[#00000083] flex rounded absolute left-full top-full -translate-x-full p-6 flex-col gap-y-[13px] w-[60%] cursor-pointer z-40  backdrop-blur-md">
                     <div className="flex items-center text-text_FAFAFA  hover:scale-110 hover:font-bold transition-all duration-300 ">
@@ -278,12 +276,17 @@ const Navbar = () => {
                 </span>
               </Link>
 
-              <Link to={"/cart"}>
-                <span className="cursor-pointer cartoffer text-button_000000 text-[25px]">
-                  <IoCartOutline />
-                </span>
-              </Link>
+              <div className="relative flex items-center">
+                <Link to={"/cart"}>
+                  <span className="cursor-pointer  text-button_000000 text-[25px]">
+                    <IoCartOutline />
+                  </span>
 
+                  <span class="absolute block left-full top-0 -translate-x-full rounded-full h-4 w-4 bg-Secondary2_DB4444 text-center text-[12px] leading-[16px]">
+                    0
+                  </span>
+                </Link>
+              </div>
               <span
                 className="cursor-pointer  text-Primary_FFFFFF  text-[12px] p-2 bg-Secondary2_DB4444 rounded-full relative"
                 onClick={manageAccount}
