@@ -3,6 +3,7 @@ import { CiHeart, CiStar } from "react-icons/ci";
 import { ImCancelCircle } from "react-icons/im";
 import {
   IoCartOutline,
+  IoLogIn,
   IoMenuSharp,
   IoPerson,
   IoSearchOutline,
@@ -12,7 +13,9 @@ import { RiAccountCircle2Line, RiShoppingBag3Line } from "react-icons/ri";
 import { TbLogout2 } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
 import { category } from "../../../../Database/category";
-import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { MdContactPhone, MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { FaShoppingBag } from "react-icons/fa";
+import { FaCircleInfo } from "react-icons/fa6";
 
 const Navbar = () => {
   const navItems = [
@@ -45,6 +48,7 @@ const Navbar = () => {
       path: "/products",
     },
   ];
+
   const [account, setAccount] = useState(false);
 
   const manageAccount = () => {
@@ -166,7 +170,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="ForPhone flex sm:hidden py-1 border ">
+      <div className="SideBarForPhone flex sm:hidden py-1 border ">
         <div className="container">
           <div className="flex LogoAndDrawer items-center justify-between">
             <div className="flex items-end gap-2">
@@ -344,6 +348,74 @@ const Navbar = () => {
               )}
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="fixedNavbarForPhone flex sm:hidden">
+        <div className="w-full flex items-center justify-center fixed left-0 top-full -translate-y-full z-40">
+          <NavLink
+            to="/products"
+            className={({ isActive }) =>
+              `Products w-1/4 px-2 py-4 border ${
+                isActive ? "bg-Text1_7D8184 text-white" : "bg-Secondary_F5F5F5"
+              }`
+            }
+          >
+            <div className="flex flex-col items-center">
+              <span>
+                <FaShoppingBag className="text-2xl" />
+              </span>
+              <h4 className="font-poppins">Products</h4>
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              `Singup w-1/4 px-2 py-4 border ${
+                isActive ? "bg-Text1_7D8184 text-white" : "bg-Secondary_F5F5F5"
+              }`
+            }
+          >
+            <div className="flex flex-col items-center">
+              <span>
+                <IoLogIn className="text-2xl" />
+              </span>
+              <h4 className="font-poppins">Singup</h4>
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `Contact w-1/4 px-2 py-4 border ${
+                isActive ? "bg-Text1_7D8184 text-white" : "bg-Secondary_F5F5F5"
+              }`
+            }
+          >
+            <div className="flex flex-col items-center">
+              <span>
+                <MdContactPhone className="text-2xl" />
+              </span>
+              <h4 className="font-poppins">Contact</h4>
+            </div>
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `About w-1/4 px-2 py-4 border ${
+                isActive ? "bg-Text1_7D8184 text-white" : "bg-Secondary_F5F5F5"
+              }`
+            }
+          >
+            <div className="flex flex-col items-center">
+              <span>
+                <FaCircleInfo className="text-2xl" />
+              </span>
+              <h4 className="font-poppins">About</h4>
+            </div>
+          </NavLink>
         </div>
       </div>
 
