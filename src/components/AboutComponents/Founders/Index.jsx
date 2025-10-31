@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import founder1 from "../../../assets/About/Founders/founder1.png";
 import founder2 from "../../../assets/About/Founders/founder2.png";
 import founder3 from "../../../assets/About/Founders/founder3.png";
@@ -7,6 +7,7 @@ import Slider from "react-slick";
 
 const Founders = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const founders = [
     {
       id: 1,
@@ -57,13 +58,46 @@ const Founders = () => {
     },
   ];
 
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   var settings = {
-    dots: true,
+    dots: !isMobile,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
 
     appendDots: (dots) => (
       <div
@@ -76,48 +110,55 @@ const Founders = () => {
           borderRadius: "10px",
         }}
       >
-        <ul style={{ margin: "0px", display: "flex" }}> {dots} </ul>
+        <ul
+          style={{ margin: "0px", display: "flex", justifyContent: "center" }}
+        >
+          {" "}
+          {dots}{" "}
+        </ul>
       </div>
     ),
     customPaging: (i) =>
-      i == currentSlide ? (
-        <div
-          style={{
-            width: "16px",
-            height: "16px",
-            color: "#ffffff",
-            background: "#DB4444",
-            border: "3px #ffffff80 solid",
-            borderRadius: "50%",
-            marginRight: "12px",
-            cursor: "pointer",
-          }}
-        ></div>
-      ) : (
-        <div
-          style={{
-            width: "16px",
-            height: "16px",
-            background: "#00000030",
-            opacity: "0.5",
-            borderRadius: "50%",
-            marginRight: "12px",
-            cursor: "pointer",
-          }}
-        ></div>
-      ),
+      !isMobile ? (
+        i == currentSlide ? (
+          <div
+            style={{
+              width: "16px",
+              height: "16px",
+              color: "#ffffff",
+              background: "#DB4444",
+              border: "3px #ffffff80 solid",
+              borderRadius: "50%",
+              marginRight: "12px",
+              cursor: "pointer",
+            }}
+          ></div>
+        ) : (
+          <div
+            style={{
+              width: "16px",
+              height: "16px",
+              background: "#00000030",
+              opacity: "0.5",
+              borderRadius: "50%",
+              marginRight: "12px",
+              cursor: "pointer",
+            }}
+          ></div>
+        )
+      ) : null,
     afterChange: function (currentSlide) {
       setcurrentSlide(currentSlide);
     },
   };
   return (
-    <div className="mb-[140px]">
+    <div className="mb-20 sm:mb-[140px]">
       <div className="container">
         <div className="FounderCart">
           <div className="slider-container">
             <Slider {...settings}>
               {founders?.map((item) => (
-                <div className="flex flex-col w-[370px] rounded pr-[30px] cursor-pointer">
+                <div className="flex flex-col w-[370px] rounded sm:pr-[30px] cursor-pointer ">
                   <div className="Image bg-Secondary_F5F5F5 pt-10 h-[430px]">
                     <img
                       className="w-full h-full object-contain"

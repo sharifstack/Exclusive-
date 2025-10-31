@@ -5,12 +5,12 @@ const OurStory = () => {
   return (
     <div>
       <div className="container ">
-        <div className="Heading&Image flex items-center">
-          <div className="">
-            <h1 className="font-inter font-semibold text-[54px] text-Text2_000000">
+        <div className="Heading&Image flex flex-col-reverse sm:flex-row sm:items-center">
+          <div className="textPart">
+            <h1 className="font-inter font-semibold text-3xl text-center sm:text-start sm:text-[54px] text-Text2_000000 my-4">
               Our Story
             </h1>
-            <p className="font-poppins font-normal text-base text-Text2_000000 mt-10 mb-6  max-w-[525px]">
+            <p className="font-poppins font-normal text-base text-Text2_000000 my-4 sm:mt-10 sm:mb-6  max-w-[525px]">
               Launced in 2015, Exclusive is South Asia’s premier online shopping
               makterplace with an active presense in Bangladesh. Supported by
               wide range of tailored marketing, data and service solutions,
@@ -24,7 +24,7 @@ const OurStory = () => {
             </p>
           </div>
 
-          <div className="relative left-[51%] -translate-x-[51%] w-[837px]">
+          <div className="sm:relative sm:left-[51%] sm:-translate-x-[51%] sm:w-[837px]">
             <img
               className="w-full h-full object-cover"
               src={aboutimg}

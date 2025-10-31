@@ -35,9 +35,9 @@ const Engagements = () => {
   ];
 
   return (
-    <div className="my-[140px]">
+    <div className="my-20 sm:my-[140px]">
       <div className="container">
-        <div className="flex items-center justify-center gap-[88px] ">
+        <div className="flex flex-wrap sm:flex-nowrap sm:items-center sm:justify-center sm:gap-[88px] gap-6 ">
           {engagements?.map((item) => (
             <div className="flex flex-col items-center border border-[rgba(0,0,0,0.3)] rounded w-full py-[30px] hover:bg-Secondary2_DB4444 group cursor-pointer hover:shadow-xl">
               <span className="text-text_FAFAFA bg-Text2_000000 rounded-full p-2 border-[12px] border-[rgba(180,180,180,0.83)] group-hover:border-[#ffffffeb] mb-6 ">

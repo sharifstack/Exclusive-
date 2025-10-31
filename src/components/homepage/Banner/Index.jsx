@@ -7,7 +7,6 @@ import Bannerimg from "../../../assets/Banner/Banner1.jpg";
 import "flowbite";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { IoMenuSharp } from "react-icons/io5";
 
 const Banner = () => {
   const [currentSlide, setcurrentSlide] = useState(0);

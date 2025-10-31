@@ -8,8 +8,8 @@ const BreadCrumb = ({ className }) => {
   console.log(pathNameArr);
 
   return (
-    <div className={`my-20 ${className}`}>
-      <div className="container">
+    <div className={`my-10 sm:my-20 ${className}`}>
+      <div className="container flex sm:block justify-center ">
         <div className="flex items-end gap-3">
           <div className="inline-block0">
             <Link

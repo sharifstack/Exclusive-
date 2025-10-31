@@ -5,11 +5,11 @@ import { MdOutlineEmail } from "react-icons/md";
 
 const Contact = () => {
   return (
-    <div className="mb-[140px]">
+    <div className=" mb-20 sm:mb-[140px]">
       <BreadCrumb />
       <div className="container">
-        <div className="flex gap-[30px]">
-          <div className="right w-[30%] shadow-lg px-[35px] pt-10 pb-[51px]">
+        <div className="flex flex-col-reverse sm:flex-row gap-[30px]">
+          <div className="right sm:w-[30%] shadow-lg px-[35px] pt-10 pb-[51px]">
             <div className="CallToUs">
               <div className="Callicon flex items-center gap-4">
                 <span className="">
@@ -55,8 +55,8 @@ const Contact = () => {
               </h4>
             </div>
           </div>
-          <div className="left shadow-lg w-[70%]">
-            <form className="shadow-lg py-10 px-8">
+          <div className="left shadow-lg sm:w-[70%]">
+            <form className="shadow-lg py-5 sm:py-10 px-8">
               <div className="Fields flex flex-wrap gap-8">
                 <div className="firstname">
                   <input
@@ -82,13 +82,13 @@ const Contact = () => {
                 </div>
                 <div className="commentBox">
                   <textarea
-                    className=" pt-[13px] pl-4 pb-[170px] pr-10 w-[980px] bg-Secondary_F5F5F5"
+                    className=" pt-[13px] pl-4 pb-[100px]  sm:pb-[170px] pr-10 w-[305px] sm:w-[980px] bg-Secondary_F5F5F5"
                     placeholder="Your Massages"
                   ></textarea>
                 </div>
               </div>
 
-              <div className="flex items-center justify-end gap-8 mt-6">
+              <div className="flex items-center justify-center sm:justify-end gap-8 mt-6">
                 <div>
                   <button className="font-poppins text-base font-medium py-4 px-12  cursor-pointer rounded bg-Button2_DB4444 text-text_FAFAFA ">
                     Send Massage
