@@ -2,11 +2,11 @@ import React from "react";
 
 const CategoryList = ({ categoryData, isLoading }) => {
   return (
-    <div className="w-[23%]">
+    <div className="sm:w-[23%]">
       <div className="container">
         <div className="cursor-pointer capitalize">
-          <div>
-            <h2 className="text-xl font-inter font-bold mb-11">
+          <div className="text-center sm:text-start">
+            <h2 className="text-xl font-inter font-bold mb-4 sm:mb-11">
               Shop By Category
             </h2>
           </div>
@@ -22,9 +22,9 @@ const CategoryList = ({ categoryData, isLoading }) => {
               ))}
             </ul>
           ) : (
-            <ul className="">
+            <ul className="flex sm:block flex-wrap gap-x-5 justify-evenly">
               {categoryData?.map((item) => (
-                <div className="flex items-center  justify-between hover:bg-Text1_7D8184 hover:text-text_FAFAFA hover:scale-105 transition-all origin-right duration-200 ">
+                <div className="flex  items-center justify-between hover:bg-Text1_7D8184 hover:text-text_FAFAFA hover:scale-105 transition-all origin-right duration-200 ">
                   <li className="cursor-pointer   font-poppins text-base font-normal py-3">
                     {item}
                   </li>
@@ -33,7 +33,7 @@ const CategoryList = ({ categoryData, isLoading }) => {
             </ul>
           )}
 
-          <div className="colors">
+          <div className="colors hidden sm:block">
             <div className="my-8">
               <h2 className="text-xl font-inter font-bold ">Shop By Color</h2>
             </div>

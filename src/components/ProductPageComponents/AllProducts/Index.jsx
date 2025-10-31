@@ -20,8 +20,8 @@ const AllProducts = () => {
   };
   //  Pagination   //
   return (
-    <div className=" container w-[77%]">
-      <div className="flex items-center gap-2 justify-end">
+    <div className=" container sm:w-[77%]">
+      <div className="ShowProductsButton hidden sm:flex items-center gap-2 justify-end">
         <h2>Show :</h2>
         <select
           name=""
@@ -40,7 +40,10 @@ const AllProducts = () => {
         {data?.products
           ?.slice(page * 9 - 9, page * itemsPerPage)
           .map((item) => (
-            <ProductCard CategoryData={item} />
+            <ProductCard
+              className={"w-[186px] sm:w-auto"}
+              CategoryData={item}
+            />
           ))}
       </div>
       {/* All Products */}

@@ -7,9 +7,9 @@ import BreadCrumb from "../../components/CommonComponents/BreadCrumb";
 const Products = () => {
   const { data, error, isLoading } = useCategoryListQuery();
   return (
-    <div className="container mb-[80px]">
+    <div className="container mb-20">
       <BreadCrumb />
-      <div className="flex gap-2">
+      <div className="sm:flex gap-2">
         <CategoryList categoryData={data} error={error} isLoading={isLoading} />
         <AllProducts />
       </div>
