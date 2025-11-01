@@ -19,9 +19,9 @@ const ProductImages = ({ image }) => {
   }, [image]);
 
   return (
-    <div className="w-3/5">
-      <div className="flex gap-10">
-        <div className=" flex flex-col gap-4">
+    <div className="sm:w-3/5">
+      <div className="flex flex-col-reverse sm:flex-row gap-4 sm:gap-10">
+        <div className=" flex justify-between sm:justify-normal sm:flex-col sm:gap-4">
           {image?.map((img, index) => (
             <div className="bg-Secondary_F5F5F5 cursor-pointer" key={index}>
               <img
@@ -50,7 +50,7 @@ const ProductImages = ({ image }) => {
           <div>
             <div className="bg-Secondary_F5F5F5">
               <InnerImageZoom
-                className="w-full h-[650px] object-"
+                className="w-full sm:h-[650px] object-"
                 src={initialImage}
               />
             </div>

@@ -20,21 +20,24 @@ const ProductDetails = () => {
   console.log(similarProducts.data?.products);
 
   return (
-    <div className="mb-[140px]">
+    <div className="mb-20 sm:mb-[140px]">
       <BreadCrumb />
       <div className="container">
-        <div className="flex gap-[70px]">
+        <div className=" sm:flex sm:gap-[70px]">
           <ProductImages image={data?.images} />
           <ProductInfo productAllDetails={data} />
         </div>
-        <div className="mt-[140px]">
+        <div className="mt-20 sm:mt-[140px]">
           <div>
             <Heading title={"Related Item"} desc={false} />
           </div>
-          <div className="flex gap-[30px]">
+          <div className="flex flex-wrap  sm:flex-row gap-[30px]">
             {similarProducts.data?.products.map((item) => (
               <div>
-                <ProductCard CategoryData={item} />
+                <ProductCard
+                  className={"w-[172px] sm:w-auto"}
+                  CategoryData={item}
+                />
               </div>
             ))}
           </div>

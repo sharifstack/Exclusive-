@@ -39,13 +39,13 @@ const ProductInfo = ({ productAllDetails }) => {
   ];
 
   return (
-    <div className="w-2/5">
+    <div className="sm:w-2/5">
       <div>
         <div className="title font-inter font-semibold text-2xl text-Text2_000000">
           {productAllDetails?.title}
         </div>
 
-        <div className="flex  items-center gap-4 py-4">
+        <div className="flex  items-center gap-4 py-2 sm:py-4">
           <div className="rating">
             <StarRating rating={4} />
           </div>
@@ -68,7 +68,7 @@ const ProductInfo = ({ productAllDetails }) => {
             ${productAllDetails?.price}
           </h2>
         </div>
-        <div className="desc w-[385px] border-b border-Text2_000000  py-6">
+        <div className="desc max-w-[385px] border-b border-Text2_000000 py-3 sm:py-6">
           <p className="font-poppins font-normal text-xs text-Text2_000000  ">
             {productAllDetails?.description}
           </p>
@@ -101,37 +101,38 @@ const ProductInfo = ({ productAllDetails }) => {
           </div>
         </div>
 
-        <div className="quantity&buyNow pt-6 pb-10 flex items-center gap-4">
+        <div className="quantity&buyNow py-4 sm:py-0 sm:pt-6 sm:pb-10 flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center">
-            <div className="flex border border-Text2_000000 rounded">
-              <span className=" w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA">
-                <LuMinus className="" />
+            <div className="Quantity flex border border-Text2_000000 rounded">
+              <span className="w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA">
+                <LuMinus />
               </span>
-              <div className="border-l border-r  border-l-Text2_000000  border-r-Text2_000000  w-20 h-11 py-2 px-[34px]">
-                <h2>2</h2>
+              <div className="border-l border-r  border-l-Text2_000000  border-r-Text2_000000 w-72 sm:w-20 h-11 py-2 px-[34px]">
+                <h2 className="text-center">2</h2>
               </div>
               <span className=" w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA">
                 <LuPlus />
               </span>
             </div>
           </div>
+          <div className="buttons flex gap-4">
+            <div className="allProductsbtn flex justify-center">
+              <button className="bg-Button2_DB4444 font-poppins text-base font-medium py-3 sm:py-2.5 px-[125px] sm:px-12 text-text_FAFAFA cursor-pointer rounded">
+                Buy Now
+              </button>
+            </div>
 
-          <div className="allProductsbtn  flex justify-center">
-            <h2 className="bg-Button2_DB4444 font-poppins text-base font-medium py-2.5 px-12 text-text_FAFAFA cursor-pointer rounded">
-              Buy Now
-            </h2>
-          </div>
-
-          <div className="heart border p-2 rounded border-[rgba(0,0,0,0.5)] hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA cursor-pointer ">
-            <span className="bg-Secondary2_DB4444">
-              <CiHeart className="text-2xl " />
-            </span>
+            <div className="heart border p-2 rounded border-[rgba(0,0,0,0.5)] hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA cursor-pointer ">
+              <span className="bg-Secondary2_DB4444">
+                <CiHeart className="text-2xl" />
+              </span>
+            </div>
           </div>
         </div>
 
         <div className="policies">
           <div className="Delivery">
-            <div className="border w-[400px] pl-4 pt-6 pb-4 rounded">
+            <div className="border max-w-[400px] pl-4 pt-6 pb-4 rounded">
               <div className="flex gap-4 items-center">
                 <span>
                   <TbTruckDelivery className="w-10 h-10" />
@@ -148,7 +149,7 @@ const ProductInfo = ({ productAllDetails }) => {
             </div>
           </div>
           <div className="ReturnDelivery">
-            <div className="border w-[400px] pl-4 pt-6 pb-4 rounded">
+            <div className="border max-w-[400px] pl-4 pt-6 pb-4 rounded">
               <div className="flex gap-4 items-center">
                 <span>
                   <LuRefreshCcw className="w-10 h-10" />
