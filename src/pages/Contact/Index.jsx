@@ -62,14 +62,14 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Your Name*"
-                    className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5  w-[305px]"
+                    className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5  w-[334px] sm:w-[305px]"
                   />
                 </div>
                 <div className="Email">
                   <input
                     type="text"
                     placeholder="Your Name*"
-                    className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5 w-[305px]"
+                    className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5  w-[334px] sm:w-[305px]"
                   />
                 </div>
 
@@ -77,12 +77,12 @@ const Contact = () => {
                   <input
                     type="text"
                     placeholder="Your Phone*"
-                    className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5 w-[305px]"
+                    className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5  w-[334px] sm:w-[305px]"
                   />
                 </div>
                 <div className="commentBox">
                   <textarea
-                    className=" pt-[13px] pl-4 pb-[100px]  sm:pb-[170px] pr-10 w-[305px] sm:w-[980px] bg-Secondary_F5F5F5"
+                    className=" pt-[13px] pl-4 pb-[100px]  sm:pb-[170px] pr-10 w-[334px] sm:w-[980px] bg-Secondary_F5F5F5"
                     placeholder="Your Massages"
                   ></textarea>
                 </div>
