@@ -4,6 +4,8 @@ import founder2 from "../../../assets/About/Founders/founder2.png";
 import founder3 from "../../../assets/About/Founders/founder3.png";
 import { CiInstagram, CiLinkedin, CiTwitter } from "react-icons/ci";
 import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Founders = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
@@ -66,7 +68,7 @@ const Founders = () => {
   }, []);
 
   var settings = {
-    dots: !isMobile,
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -87,14 +89,6 @@ const Founders = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
         },
       },
     ],
@@ -119,34 +113,32 @@ const Founders = () => {
       </div>
     ),
     customPaging: (i) =>
-      !isMobile ? (
-        i == currentSlide ? (
-          <div
-            style={{
-              width: "16px",
-              height: "16px",
-              color: "#ffffff",
-              background: "#DB4444",
-              border: "3px #ffffff80 solid",
-              borderRadius: "50%",
-              marginRight: "12px",
-              cursor: "pointer",
-            }}
-          ></div>
-        ) : (
-          <div
-            style={{
-              width: "16px",
-              height: "16px",
-              background: "#00000030",
-              opacity: "0.5",
-              borderRadius: "50%",
-              marginRight: "12px",
-              cursor: "pointer",
-            }}
-          ></div>
-        )
-      ) : null,
+      i == currentSlide ? (
+        <div
+          style={{
+            width: "16px",
+            height: "16px",
+            color: "#ffffff",
+            background: "#DB4444",
+            border: "3px #ffffff80 solid",
+            borderRadius: "50%",
+            marginRight: "12px",
+            cursor: "pointer",
+          }}
+        ></div>
+      ) : (
+        <div
+          style={{
+            width: "16px",
+            height: "16px",
+            background: "#00000030",
+            opacity: "0.5",
+            borderRadius: "50%",
+            marginRight: "12px",
+            cursor: "pointer",
+          }}
+        ></div>
+      ),
     afterChange: function (currentSlide) {
       setcurrentSlide(currentSlide);
     },

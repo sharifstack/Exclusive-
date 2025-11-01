@@ -101,7 +101,9 @@ const Banner = () => {
             }}
           ></div>
         )
-      ) : null,
+      ) : (
+        bull
+      ),
     afterChange: function (currentSlide) {
       setcurrentSlide(currentSlide);
     },

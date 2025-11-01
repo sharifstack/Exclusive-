@@ -286,7 +286,7 @@ const Navbar = () => {
                     <IoCartOutline />
                   </span>
 
-                  <span class="absolute block left-full top-0 -translate-x-full rounded-full h-4 w-4 bg-Secondary2_DB4444 text-center text-[12px] leading-[16px]">
+                  <span class="absolute block left-full top-0 -translate-x-full rounded-full h-4 w-4 bg-Secondary2_DB4444 text-center text-white text-[12px] leading-[16px]">
                     0
                   </span>
                 </Link>

@@ -41,7 +41,7 @@ const AllProducts = () => {
           ?.slice(page * 9 - 9, page * itemsPerPage)
           .map((item) => (
             <ProductCard
-              className={"w-[163px] sm:w-auto"}
+              className={"w-[175px] sm:w-auto"}
               CategoryData={item}
             />
           ))}
