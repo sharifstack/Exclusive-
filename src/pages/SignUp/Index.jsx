@@ -1,5 +1,6 @@
 import React from "react";
 import loginimg from "../../assets/login/login.gif";
+import { Link } from "react-router-dom";
 
 const SignUp = () => {
   return (
@@ -11,7 +12,7 @@ const SignUp = () => {
           </div>
         </div>
         <div className="container">
-          <div className="sm:w-[55%]  sm:h-[781px] flex flex-col justify-center items-end">
+          <div className="sm:w-[55%]  sm:h-[781px] flex flex-col justify-center items-center sm:items-end">
             <div className="">
               <div className="mb-12">
                 <h1 className="font-inter font-medium text-4xl text-Text2_000000 mb-6">
@@ -53,11 +54,13 @@ const SignUp = () => {
                   Create Account
                 </button>
 
-                <div className="forgotPassword cursor-pointer">
-                  <h4 className="font-poppins font-normal text-base  text-Secondary2_DB4444">
-                    Forget Password?
-                  </h4>
-                </div>
+                <Link to={"/login"}>
+                  <div className="forgotPassword cursor-pointer">
+                    <button className="font-poppins font-normal text-base  text-Secondary2_DB4444">
+                      Already a customer?
+                    </button>
+                  </div>
+                </Link>
               </div>
             </div>
           </div>
