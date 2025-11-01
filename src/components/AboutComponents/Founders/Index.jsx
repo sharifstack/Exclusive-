@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 const Founders = () => {
   const [currentSlide, setcurrentSlide] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
+  const [slidesToShow, setSlidesToShow] = useState(4);
   const founders = [
     {
       id: 1,
@@ -60,38 +60,34 @@ const Founders = () => {
     },
   ];
 
+  //responsive slider
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) {
+        setSlidesToShow(1);
+      } else if (width < 1024) {
+        setSlidesToShow(2);
+      } else if (width < 1280) {
+        setSlidesToShow(3);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+  //responsive slider
 
   var settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
     arrows: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 2,
-        },
-      },
-    ],
 
     appendDots: (dots) => (
       <div
@@ -107,8 +103,7 @@ const Founders = () => {
         <ul
           style={{ margin: "0px", display: "flex", justifyContent: "center" }}
         >
-          {" "}
-          {dots}{" "}
+          {dots}
         </ul>
       </div>
     ),
