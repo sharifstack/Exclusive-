@@ -88,6 +88,7 @@ const Founders = () => {
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
     arrows: false,
+    autoplay: true,
 
     appendDots: (dots) => (
       <div
@@ -145,7 +146,7 @@ const Founders = () => {
           <div className="slider-container">
             <Slider {...settings}>
               {founders?.map((item) => (
-                <div className="flex flex-col w-[370px] rounded sm:pr-[30px] cursor-pointer ">
+                <div className="flex flex-col w-[370px] rounded sm:pr-[30px] cursor-pointer">
                   <div className="Image bg-Secondary_F5F5F5 pt-10 h-[430px]">
                     <img
                       className="w-full h-full object-contain"

@@ -21,15 +21,15 @@ const Login = () => {
   });
 
   return (
-    <div className="mt-10 mb-[140px] ">
+    <div className="sm:mt-10 sm:mb-[140px] my-20">
       <div className="flex ">
-        <div className="w-full bg-[#CBE4E8] flex justify-center items-center ">
+        <div className="w-full bg-[#CBE4E8] hidden sm:flex justify-center items-center ">
           <div className="">
             <img className="" src={loginimg} alt="" />
           </div>
         </div>
         <div className="container">
-          <div className="w-[55%]  h-[781px] flex flex-col justify-center items-end">
+          <div className="sm:w-[55%]  sm:h-[781px] flex flex-col justify-center items-end">
             <div className="">
               <div className="mb-12">
                 <h1 className="font-inter font-medium text-4xl text-Text2_000000 mb-6">
@@ -87,15 +87,15 @@ const Login = () => {
                   ) : null}
                 </div>
 
-                <div className="allProductsbtn flex items-center gap-[87px]">
+                <div className="allProductsbtn flex flex-col sm:flex-row items-center gap-4 sm:gap-[87px]">
                   <button className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded">
                     Log In
                   </button>
 
                   <div className="forgotPassword cursor-pointer">
-                    <h4 className="font-poppins font-normal text-base  text-Secondary2_DB4444">
+                    <button className="font-poppins font-normal text-base  text-Secondary2_DB4444">
                       Forget Password?
-                    </h4>
+                    </button>
                   </div>
                 </div>
               </form>
