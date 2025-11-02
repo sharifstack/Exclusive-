@@ -35,7 +35,7 @@ const ProductDetails = () => {
             {similarProducts.data?.products.map((item) => (
               <div>
                 <ProductCard
-                  className={"w-[172px] sm:w-auto"}
+                  className={"w-[184px] sm:w-auto"}
                   CategoryData={item}
                 />
               </div>

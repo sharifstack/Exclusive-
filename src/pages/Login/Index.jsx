@@ -29,7 +29,7 @@ const Login = () => {
           </div>
         </div>
         <div className="container">
-          <div className="sm:w-[55%]  sm:h-[781px] flex flex-col justify-center items-end">
+          <div className="sm:w-[55%]  sm:h-[781px] flex flex-col justify-center items-center sm:items-end">
             <div className="">
               <div className="mb-12">
                 <h1 className="font-inter font-medium text-4xl text-Text2_000000 mb-6">
