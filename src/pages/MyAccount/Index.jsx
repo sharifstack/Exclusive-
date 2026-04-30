@@ -99,7 +99,7 @@ const MyAccount = () => {
                     <input
                       id="email"
                       type="text"
-                      placeholder="Address"
+                      placeholder="Email"
                       className="py-3 pl-4 pr-10 rounded bg-Secondary_F5F5F5 w-[330px]"
                     />
                   </div>
