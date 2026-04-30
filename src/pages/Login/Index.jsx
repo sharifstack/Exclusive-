@@ -3,20 +3,38 @@ import { Formik, useFormik } from "formik";
 import loginimg from "../../assets/login/login.gif";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { loginValidation } from "../../Validation/loginValidation";
+import useAuth from "../../Features/Auth/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { getAuthErrorMessage } from "../../Features/Auth/authService";
 
 const Login = () => {
   const [eye, setEye] = useState(false);
-
-  const initialValue = {
-    emailorphone: "",
-    password: "",
-  };
+  const { login } = useAuth;
+  const navigate = useNavigate();
 
   const formik = useFormik({
-    initialValues: initialValue,
+    initialValues: {
+      email: "",
+      password: "",
+    },
+
     validationSchema: loginValidation,
-    onSubmit: (value) => {
-      console.log(value);
+
+    onSubmit: async (values, { setSubmitting, setErrors }) => {
+      try {
+        await login({
+          email: values.email,
+          password: values.password,
+        });
+
+        navigate("/");
+      } catch (err) {
+        setErrors({
+          email: getAuthErrorMessage(err),
+        });
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
@@ -44,16 +62,16 @@ const Login = () => {
                 <div className="Email">
                   <input
                     className="w-[370px] pb-2 border-b border-Text2_000000 font-poppins text-base font-normal text-Text2_000000"
-                    name="emailorphone"
+                    name="email"
                     type="text"
-                    placeholder="Email or Phone Number"
+                    placeholder="Enter Your Email "
                     onChange={formik.handleChange}
-                    value={formik.values.emailorphone}
+                    value={formik.values.email}
                   />
 
-                  {formik.touched.emailorphone && formik.errors.emailorphone ? (
+                  {formik.touched.email && formik.errors.email ? (
                     <span className="block mt-2 text-Secondary2_DB4444 text-sm">
-                      {formik.errors.emailorphone}
+                      {formik.errors.email}
                     </span>
                   ) : null}
                 </div>
@@ -88,8 +106,12 @@ const Login = () => {
                 </div>
 
                 <div className="allProductsbtn flex flex-col sm:flex-row items-center gap-4 sm:gap-[87px]">
-                  <button className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded">
-                    Log In
+                  <button
+                    type="submit"
+                    disabled={formik.isSubmitting}
+                    className="bg-Button2_DB4444 font-poppins text-base font-medium py-4 px-12 text-text_FAFAFA cursor-pointer rounded"
+                  >
+                    {formik.isSubmitting ? "Logging..." : "Log In"}
                   </button>
 
                   <div className="forgotPassword cursor-pointer">
