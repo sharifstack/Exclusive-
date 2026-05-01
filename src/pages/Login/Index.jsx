@@ -9,7 +9,7 @@ import { getAuthErrorMessage } from "../../Features/Auth/authService";
 
 const Login = () => {
   const [eye, setEye] = useState(false);
-  const { login } = useAuth;
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -30,7 +30,7 @@ const Login = () => {
         navigate("/");
       } catch (err) {
         setErrors({
-          email: getAuthErrorMessage(err),
+          email: getAuthErrorMessage(err.code),
         });
       } finally {
         setSubmitting(false);
@@ -63,7 +63,7 @@ const Login = () => {
                   <input
                     className="w-[370px] pb-2 border-b border-Text2_000000 font-poppins text-base font-normal text-Text2_000000"
                     name="email"
-                    type="text"
+                    type="email"
                     placeholder="Enter Your Email "
                     onChange={formik.handleChange}
                     value={formik.values.email}
@@ -115,7 +115,10 @@ const Login = () => {
                   </button>
 
                   <div className="forgotPassword cursor-pointer">
-                    <button className="font-poppins font-normal text-base  text-Secondary2_DB4444">
+                    <button
+                      type="button"
+                      className="font-poppins font-normal text-base  text-Secondary2_DB4444"
+                    >
                       Forget Password?
                     </button>
                   </div>

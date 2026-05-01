@@ -16,8 +16,16 @@ import { category } from "../../../../Database/category";
 import { MdContactPhone, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
-
+import useAuth from "../../../Features/Auth/hooks/useAuth";
 const Navbar = () => {
+  const { user, login } = useAuth();
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    setAccount(false);
+  };
+
   const navItems = [
     {
       id: 1,
@@ -75,8 +83,8 @@ const Navbar = () => {
                         isPending
                           ? "text-Text2_000000 font-poppins text-[16px] font-normal"
                           : isActive
-                          ? "border-b border-HoverButton2_A0BCE0 font-poppins text-[16px] font-normal"
-                          : "text-Text2_000000 font-poppins text-[16px] font-normal"
+                            ? "border-b border-HoverButton2_A0BCE0 font-poppins text-[16px] font-normal"
+                            : "text-Text2_000000 font-poppins text-[16px] font-normal"
                       }
                     >
                       {nav.item}
@@ -109,13 +117,20 @@ const Navbar = () => {
                   </span>
                 </Link>
 
-                <span
-                  className="cursor-pointer  text-Primary_FFFFFF  text-xl p-2 bg-Secondary2_DB4444 rounded-full relative"
-                  onClick={manageAccount}
-                >
-                  <LuUser />
-                </span>
-                {account && (
+                {user ? (
+                  <span
+                    className="cursor-pointer  text-Primary_FFFFFF  text-xl p-2 bg-Secondary2_DB4444 rounded-full relative"
+                    onClick={manageAccount}
+                  >
+                    <LuUser />
+                  </span>
+                ) : (
+                  <Link to={"/login"} className="font-base">
+                    Log in
+                  </Link>
+                )}
+
+                {user && account && (
                   <div className="bg-[#00000083] flex rounded absolute left-full top-full -translate-x-full p-6 flex-col gap-y-[13px] w-[60%] cursor-pointer z-40  backdrop-blur-md">
                     <div className="flex items-center text-text_FAFAFA  hover:scale-110 hover:font-bold transition-all duration-300 ">
                       <span className="text-3xl p-2 mr-4 ">
@@ -153,7 +168,10 @@ const Navbar = () => {
                       </h2>
                     </div>
 
-                    <div className="flex items-center text-text_FAFAFA hover:scale-110  hover:font-bold transition-all duration-300">
+                    <div
+                      onClick={handleLogout}
+                      className="flex items-center text-text_FAFAFA hover:scale-110  hover:font-bold transition-all duration-300"
+                    >
                       <span className="text-3xl p-2  mr-4">
                         <TbLogout2 />
                       </span>
