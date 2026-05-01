@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import StarRating from "../../../CommonComponents/StarRating";
 import { LuMinus, LuPlus, LuRefreshCcw } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
@@ -21,22 +21,40 @@ const ProductInfo = ({ productAllDetails }) => {
       size: "XS",
     },
     {
-      id: 1,
+      id: 2,
       size: "S",
     },
     {
-      id: 1,
+      id: 3,
       size: "M",
     },
     {
-      id: 1,
+      id: 4,
       size: "L",
     },
     {
-      id: 1,
+      id: 5,
       size: "XL",
     },
   ];
+
+  const [quantity, setQuantity] = useState(1);
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const handleSizes = (size) => {
+    setSelectedSize(size);
+  };
 
   return (
     <div className="sm:w-2/5">
@@ -92,7 +110,11 @@ const ProductInfo = ({ productAllDetails }) => {
           </div>
           <div className="flex gap-4">
             {sizes?.map((item) => (
-              <div className="border-2 border-[rgba(0,0,0,0.5)] rounded w-8 h-8 flex items-center justify-center hover:border-0 hover:bg-Secondary2_DB4444 text-Text2_000000 hover:text-text_FAFAFA cursor-pointer">
+              <div
+                key={item.id}
+                onClick={() => handleSizes(item.size)}
+                className={`border-2 border-[rgba(0,0,0,0.5)] rounded w-8 h-8 flex items-center justify-center  hover:text-text_FAFAFA cursor-pointer hover:border-0  ${selectedSize === item.size ? "bg-Secondary2_DB4444 border-0 text-text_FAFAFA" : "border-[rgba(0,0,0,0.5)] text-Text2_000000 hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA"} `}
+              >
                 <h2 className="text-sm font-poppins font-medium">
                   {item.size}
                 </h2>
@@ -104,13 +126,19 @@ const ProductInfo = ({ productAllDetails }) => {
         <div className="quantity&buyNow py-4 sm:py-0 sm:pt-6 sm:pb-10 flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center">
             <div className="Quantity flex border border-Text2_000000 rounded">
-              <span className="w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA">
+              <span
+                onClick={handleDecrement}
+                className="w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA"
+              >
                 <LuMinus />
               </span>
               <div className="border-l border-r  border-l-Text2_000000  border-r-Text2_000000 w-72 sm:w-20 h-11 py-2 px-[34px]">
-                <h2 className="text-center">2</h2>
+                <h2 className="text-center">{quantity}</h2>
               </div>
-              <span className=" w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA">
+              <span
+                onClick={handleIncrement}
+                className=" w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA"
+              >
                 <LuPlus />
               </span>
             </div>
