@@ -2,8 +2,15 @@ import React from "react";
 import BreadCrumb from "../CommonComponents/BreadCrumb";
 import cart from "../../assets/cart/cart.png";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import useCart from "../../helpers/hooks/useCart";
 
 const CartComponents = () => {
+  const { cartItems, incrementCartItem, decrementCartItem } = useCart();
+
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
   return (
     <div className="mb-[140px]">
       <div className="container">
@@ -32,39 +39,55 @@ const CartComponents = () => {
               </h2>
             </div>
           </div>
-          {[...new Array(4)].map((_, index) => (
+          {cartItems.map((item) => (
             <div className="flex border shadow-lg">
               <div className="flex items-center gap-5 w-3/12 py-6 px-10">
                 <div>
-                  <img src={cart} alt={cart} />
+                  <img src={item.image} alt={item.name} />
                 </div>
                 <h2 className="font-poppins font-normal text-base text-Text2_000000">
-                  LCD Monitor
+                  {item.title}
                 </h2>
               </div>
               <div className="flex items-center justify-center w-3/12 py-6 px-10">
                 <h2 className="font-poppins font-normal text-base text-Text2_000000">
-                  $650
+                  ${item.price}
                 </h2>
               </div>
-              <div className=" w-3/12 py-6 px-10">
-                <div className="relative flex items-center justify-center">
-                  <input
-                    type="text"
-                    className="border border-[rgba(0,0,0,0.4)] rounded  w-[72px] py-1.5 pl-3 pr-10"
-                  />
+              <div className="w-3/12 py-6 px-10 flex justify-center">
+                <div className="flex items-center border rounded">
+                  <button
+                    onClick={() =>
+                      decrementCartItem(
+                        item.id,
+                        item.selectedSize,
+                        item.selectedColor,
+                      )
+                    }
+                    className="px-2"
+                  >
+                    -
+                  </button>
 
-                  <span className="absolute left-[55%] top-0 -translate-x-[55%]">
-                    <MdKeyboardArrowUp className="text-xl" />
-                  </span>
-                  <span className="absolute left-[55%]  bottom-0 -translate-x-[55%] ">
-                    <MdKeyboardArrowDown className="text-xl" />
-                  </span>
+                  <span className="px-3">{item.quantity}</span>
+
+                  <button
+                    onClick={() =>
+                      incrementCartItem(
+                        item.id,
+                        item.selectedSize,
+                        item.selectedColor,
+                      )
+                    }
+                    className="px-2"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
               <div className="flex items-center justify-end w-3/12  py-6 px-[60px]">
                 <h2 className="font-poppins font-normal text-base text-Text2_000000 ">
-                  $650
+                  ${(item.price * item.quantity).toFixed(2)}
                 </h2>
               </div>
             </div>
@@ -108,7 +131,7 @@ const CartComponents = () => {
                   Subtotal:
                 </h5>
                 <h5 className="font-poppins font-normal text-base text-Text2_000000">
-                  $1750
+                  ${total.toFixed(2)}
                 </h5>
               </div>
 
@@ -126,7 +149,7 @@ const CartComponents = () => {
                   Total:
                 </h5>
                 <h5 className="font-poppins font-normal text-base text-Text2_000000">
-                  $1750
+                  ${total.toFixed(2)}
                 </h5>
               </div>
               <div className="text-center">

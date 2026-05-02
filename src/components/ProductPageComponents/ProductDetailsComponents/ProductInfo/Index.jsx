@@ -37,8 +37,28 @@ const ProductInfo = ({ productAllDetails }) => {
       size: "XL",
     },
   ];
+  const colors = [
+    {
+      id: 1,
+      color: (
+        <span className="block bg-[#A0BCE0] w-5 h-5 rounded-full  border-2 cursor-pointer"></span>
+      ),
+    },
+    {
+      id: 2,
+      color: (
+        <span className="block bg-[#E07575] w-5 h-5 rounded-full border-2 cursor-pointer"></span>
+      ),
+    },
+  ];
 
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedColor, setSelectedColor] = useState(null);
+
+  const handleColor = (id) => {
+    setSelectedColor(id);
+  };
 
   const handleDecrement = () => {
     if (quantity > 1) {
@@ -49,8 +69,6 @@ const ProductInfo = ({ productAllDetails }) => {
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
-
-  const [selectedSize, setSelectedSize] = useState(null);
 
   const handleSizes = (size) => {
     setSelectedSize(size);
@@ -97,12 +115,19 @@ const ProductInfo = ({ productAllDetails }) => {
             Colours:
           </h2>
           <div className="flex gap-2">
-            <span className="block bg-HoverButton2_A0BCE0 w-5 h-5 rounded-full hover:border-2 hover:border-black cursor-pointer"></span>
-            <span className="block bg-HoverButton_E07575 w-5 h-5 rounded-full hover:border-2 hover:border-black  cursor-pointer"></span>
+            {colors?.map((item) => (
+              <span
+                key={item.id}
+                onClick={() => handleColor(item.id)}
+                className={`border-2 rounded-full cursor-pointer  ${selectedColor === item.id ? "border-2 border-black/50 " : ""}`}
+              >
+                {item.color}
+              </span>
+            ))}
           </div>
         </div>
 
-        <div className="size flex items-center gap-6">
+        <div className="size flex items-center gap-6 select-none">
           <div>
             <h2 className="font-inter font-normal text-xl text-Text2_000000">
               Size:
@@ -113,9 +138,9 @@ const ProductInfo = ({ productAllDetails }) => {
               <div
                 key={item.id}
                 onClick={() => handleSizes(item.size)}
-                className={`border-2 border-[rgba(0,0,0,0.5)] rounded w-8 h-8 flex items-center justify-center  hover:text-text_FAFAFA cursor-pointer hover:border-0  ${selectedSize === item.size ? "bg-Secondary2_DB4444 border-0 text-text_FAFAFA" : "border-[rgba(0,0,0,0.5)] text-Text2_000000 hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA"} `}
+                className={`border-2 border-[rgba(0,0,0,0.5)] rounded w-8 h-8 flex items-center justify-center  hover:text-text_FAFAFA cursor-pointer hover:border-0  ${selectedSize === item.size ? "bg-Secondary2_DB4444 border-0 text-text_FAFAFA" : " text-Text2_000000 hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA"} `}
               >
-                <h2 className="text-sm font-poppins font-medium">
+                <h2 className="font-poppins font-medium text-xs">
                   {item.size}
                 </h2>
               </div>
@@ -125,7 +150,7 @@ const ProductInfo = ({ productAllDetails }) => {
 
         <div className="quantity&buyNow py-4 sm:py-0 sm:pt-6 sm:pb-10 flex flex-col sm:flex-row items-center gap-4">
           <div className="flex items-center">
-            <div className="Quantity flex border border-Text2_000000 rounded">
+            <div className="Quantity flex border border-Text2_000000 rounded select-none">
               <span
                 onClick={handleDecrement}
                 className="w-10 h-11 p-3 cursor-pointer hover:bg-Button2_DB4444 hover:text-text_FAFAFA"
@@ -152,7 +177,7 @@ const ProductInfo = ({ productAllDetails }) => {
 
             <div className="heart border p-2 rounded border-[rgba(0,0,0,0.5)] hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA cursor-pointer ">
               <span className="bg-Secondary2_DB4444">
-                <CiHeart className="text-2xl" />
+                <CiHeart className="text-2xl"/>
               </span>
             </div>
           </div>

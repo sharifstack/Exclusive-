@@ -17,9 +17,15 @@ import { MdContactPhone, MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCircleInfo } from "react-icons/fa6";
 import useAuth from "../../../Features/Auth/hooks/useAuth";
+import useCart from "../../../helpers/hooks/useCart";
+import { span } from "framer-motion/client";
+
 const Navbar = () => {
   const { user, login } = useAuth();
   const { logout } = useAuth();
+  const { cartItems } = useCart();
+
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const handleLogout = async () => {
     await logout();
@@ -114,6 +120,10 @@ const Navbar = () => {
                 <Link to={"/cart"}>
                   <span className="cursor-pointer cartoffer text-button_000000 text-[30px]">
                     <IoCartOutline />
+
+                    {cartCount > 0 && (
+                      <span className="cart-badge">{cartCount}</span>
+                    )}
                   </span>
                 </Link>
 

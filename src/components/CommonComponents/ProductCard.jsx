@@ -5,8 +5,27 @@ import { IoEyeOutline } from "react-icons/io5";
 import MakeDiscount from "../../helpers/hooks/MakeDiscount";
 import StarRating from "./StarRating";
 import { Link } from "react-router-dom";
+import useCart from "../../helpers/hooks/useCart";
+import toast from "react-hot-toast";
 
 const ProductCard = ({ CategoryData, className }) => {
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (e) => {
+    e.preventDefault(); // ❗ Link navigation stop
+    e.stopPropagation(); // ❗ parent click block
+
+    const product = {
+      id: CategoryData.id,
+      title: CategoryData.title,
+      price: CategoryData.price,
+      image: CategoryData.thumbnail,
+    };
+
+    addToCart(product);
+
+    toast.success(`${product.title} added to cart successfully`);
+  };
   return (
     <div>
       <Link to={`/productdetails/${CategoryData.id}`}>
@@ -40,7 +59,10 @@ const ProductCard = ({ CategoryData, className }) => {
                 />
               </div>
 
-              <div className="addtocart opacity-0 group-hover:opacity-100 bg-button_000000 py-2 transition-all cursor-pointer">
+              <div
+                onClick={handleAddToCart}
+                className="addtocart opacity-0 group-hover:opacity-100 bg-button_000000 py-2 transition-all cursor-pointer"
+              >
                 <h1 className="font-poppins text-base font-medium text-Primary_FFFFFF text-center">
                   Add To Cart
                 </h1>
@@ -56,7 +78,7 @@ const ProductCard = ({ CategoryData, className }) => {
                   $
                   {MakeDiscount(
                     CategoryData.price,
-                    CategoryData.discountPercentage
+                    CategoryData.discountPercentage,
                   ).toFixed(2)}
                 </div>
                 <div className="offerprice font-poppins font-medium text-base text-button_000000 opacity-50 line-through">

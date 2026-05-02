@@ -5,6 +5,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import Home from "./pages/Home/Index";
 import RootMainLayOut from "./components/RootLayOut/RootMainLayOut";
 import BreadCrumb from "./components/CommonComponents/BreadCrumb";
@@ -37,12 +38,17 @@ const router = createBrowserRouter(
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
       </Route>
-    </Route>
-  )
+    </Route>,
+  ),
 );
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <Toaster position="bottom-right" />
+      <RouterProvider router={router} />;
+    </>
+  );
 };
 
 export default App;
