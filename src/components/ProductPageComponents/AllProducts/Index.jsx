@@ -1,33 +1,101 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ProductCard from "../../CommonComponents/ProductCard";
 import { useGetAllProductQuery } from "../../../Features/Api/ProductApi";
 
-const AllProducts = () => {
+const AllProducts = ({ filters }) => {
   const { data, error, isLoading } = useGetAllProductQuery();
   const [page, setPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(12);
-  let totalPage = data?.limit / 9;
-  //  Pagination   //
-  const handlePerItem = (index) => {
-    if (index > 0 && index <= Math.ceil(totalPage)) {
+
+  const filteredProducts = useMemo(() => {
+    let products = data?.products || [];
+
+    // Category filter
+    if (filters.category && filters.category !== "all") {
+      products = products.filter(
+        (item) =>
+          item.category?.toLowerCase() === filters.category.toLowerCase()
+      );
+    }
+
+    // Price filter
+    if (filters.minPrice !== "") {
+      products = products.filter(
+        (item) => Number(item.price) >= Number(filters.minPrice)
+      );
+    }
+
+    if (filters.maxPrice !== "") {
+      products = products.filter(
+        (item) => Number(item.price) <= Number(filters.maxPrice)
+      );
+    }
+
+    // Size filter
+    if (filters.sizes?.length > 0) {
+      products = products.filter((item) => {
+        const productSizes = item.size || item.sizes || [];
+        if (Array.isArray(productSizes)) {
+          return filters.sizes.some((size) => productSizes.includes(size));
+        }
+        return filters.sizes.includes(productSizes);
+      });
+    }
+
+    // Sort
+    if (filters.sortBy === "price-low-high") {
+      products = [...products].sort((a, b) => a.price - b.price);
+    }
+
+    if (filters.sortBy === "price-high-low") {
+      products = [...products].sort((a, b) => b.price - a.price);
+    }
+
+    if (filters.sortBy === "a-z") {
+      products = [...products].sort((a, b) =>
+        (a.title || "").localeCompare(b.title || "")
+      );
+    }
+
+    if (filters.sortBy === "z-a") {
+      products = [...products].sort((a, b) =>
+        (b.title || "").localeCompare(a.title || "")
+      );
+    }
+
+    return products;
+  }, [data?.products, filters]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [filters, itemsPerPage]);
+
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+  const handlePageChange = (index) => {
+    if (index > 0 && index <= totalPages) {
       setPage(index);
     }
   };
 
-  let showItems = (element) => {
-    let numberOfShowingItems = Number(element.target.value);
-    setItemsPerPage(numberOfShowingItems);
+  const showItems = (e) => {
+    setItemsPerPage(Number(e.target.value));
   };
-  //  Pagination   //
+
+  const startIndex = (page - 1) * itemsPerPage;
+  const currentProducts = filteredProducts.slice(
+    startIndex,
+    startIndex + itemsPerPage
+  );
+
   return (
-    <div className=" container sm:w-[77%]">
-      <div className="ShowProductsButton hidden sm:flex items-center gap-2 justify-end">
+    <div className="container sm:w-[77%]">
+      <div className="hidden sm:flex items-center gap-2 justify-end">
         <h2>Show :</h2>
         <select
-          name=""
-          id=""
-          className="bg-slate-100 px-4  py-1"
+          className="bg-slate-100 px-4 py-1"
           onChange={showItems}
+          value={itemsPerPage}
         >
           <option value="12">12</option>
           <option value="24">24</option>
@@ -35,58 +103,57 @@ const AllProducts = () => {
         </select>
       </div>
 
-      {/* All Products */}
       <div className="flex flex-wrap gap-8">
-        {data?.products
-          ?.slice(page * 9 - 9, page * itemsPerPage)
-          .map((item) => (
-            <ProductCard
-              className={"w-[175px] sm:w-auto"}
-              CategoryData={item}
-            />
-          ))}
+        {currentProducts?.map((item) => (
+          <ProductCard
+            key={item._id}
+            className={"w-[175px] sm:w-auto"}
+            CategoryData={item}
+          />
+        ))}
       </div>
-      {/* All Products */}
 
-      {/* Pagination */}
-      <div
-        aria-label="Page navigation example"
-        className="mt-20 flex justify-center "
-      >
-        <ul class="inline-flex -space-x-px text-base h-10 ">
+      <div className="mt-20 flex justify-center">
+        <ul className="inline-flex -space-x-px text-base h-10">
           <li>
-            <span
-              href="#"
-              class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 hover:bg-Secondary1_FEFAF1 cursor-pointer rounded"
-              onClick={() => handlePerItem(page - 1)}
+            <button
+              type="button"
+              className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l hover:bg-Secondary1_FEFAF1"
+              onClick={() => handlePageChange(page - 1)}
+              disabled={page === 1}
             >
               Previous
-            </span>
+            </button>
           </li>
-          {[...new Array(Math.ceil(totalPage || 8))].map((_, index) => (
-            <li>
-              <span
-                href="#"
-                class="flex items-center justify-center px-4 h-10 leading-tight text-Text1_7D8184 bg-white border border-gray-300 hover:bg-Secondary1_FEFAF1 cursor-pointer"
-                onClick={() => handlePerItem(index + 1)}
+
+          {[...new Array(totalPages || 1)].map((_, index) => (
+            <li key={index}>
+              <button
+                type="button"
+                className={`flex items-center justify-center px-4 h-10 leading-tight border border-gray-300 ${
+                  page === index + 1
+                    ? "bg-gray-200"
+                    : "bg-white hover:bg-Secondary1_FEFAF1"
+                }`}
+                onClick={() => handlePageChange(index + 1)}
               >
                 {index + 1}
-              </span>
+              </button>
             </li>
           ))}
 
           <li>
-            <span
-              href="#"
-              class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-Secondary1_FEFAF1 cursor-pointer rounded"
-              onClick={() => handlePerItem(page + 1)}
+            <button
+              type="button"
+              className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r hover:bg-Secondary1_FEFAF1"
+              onClick={() => handlePageChange(page + 1)}
+              disabled={page === totalPages}
             >
               Next
-            </span>
+            </button>
           </li>
         </ul>
       </div>
-      {/* Pagination */}
     </div>
   );
 };

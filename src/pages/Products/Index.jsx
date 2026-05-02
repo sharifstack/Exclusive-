@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CategoryList from "../../components/ProductPageComponents/CategoryList/Index";
 import { useCategoryListQuery } from "../../Features/Api/ProductApi";
 import AllProducts from "../../components/ProductPageComponents/AllProducts/Index";
@@ -6,12 +6,27 @@ import BreadCrumb from "../../components/CommonComponents/BreadCrumb";
 
 const Products = () => {
   const { data, error, isLoading } = useCategoryListQuery();
+
+  const [filters, setFilters] = useState({
+    category: "all",
+    minPrice: "",
+    maxPrice: "",
+    sizes: [],
+    sortBy: "",
+  });
+
   return (
     <div className="container mb-20">
       <BreadCrumb />
       <div className="sm:flex gap-2">
-        <CategoryList categoryData={data} error={error} isLoading={isLoading} />
-        <AllProducts />
+        <CategoryList
+          categoryData={data}
+          error={error}
+          isLoading={isLoading}
+          filters={filters}
+          setFilters={setFilters}
+        />
+        <AllProducts filters={filters} />
       </div>
     </div>
   );
