@@ -5,6 +5,7 @@ import {
   logoutUser,
   resetPassword,
   signupWithEmail,
+  loginWithGoogle,
 } from "./authService";
 
 export const AuthContext = createContext(null);
@@ -28,10 +29,19 @@ export default function AuthProvider({ children }) {
       loading,
       signup: signupWithEmail,
       login: loginWithEmail,
+      googleLogin: loginWithGoogle,
       logout: logoutUser,
       forgotPassword: resetPassword,
     };
-  }, [user, loading]);
+  }, [
+    user,
+    loading,
+    signupWithEmail,
+    loginWithEmail,
+    loginWithGoogle,
+    logoutUser,
+    resetPassword,
+  ]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }

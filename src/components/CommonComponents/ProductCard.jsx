@@ -7,9 +7,11 @@ import StarRating from "./StarRating";
 import { Link } from "react-router-dom";
 import useCart from "../../helpers/hooks/useCart";
 import toast from "react-hot-toast";
+import useWishlist from "../../helpers/hooks/useWishlist";
 
 const ProductCard = ({ CategoryData, className }) => {
   const { addToCart } = useCart();
+  const { toggleWishlist, isInWishlist } = useWishlist();
 
   const handleAddToCart = (e) => {
     e.preventDefault(); // ❗ Link navigation stop
@@ -42,9 +44,42 @@ const ProductCard = ({ CategoryData, className }) => {
                 )}
 
                 <div className="absolute right-3 top-3">
-                  <span className="text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full mb-2 hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA transition-all cursor-pointer">
-                    <IoIosHeartEmpty className="text-2xl " />
-                  </span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+
+                      const product = {
+                        id: CategoryData.id,
+                        title: CategoryData.title,
+                        price: CategoryData.price,
+                        thumbnail: CategoryData.thumbnail,
+                        discountPercentage: CategoryData.discountPercentage,
+                        rating: CategoryData.rating,
+                        reviews: CategoryData.reviews,
+                      };
+
+                      const alreadyWishlisted = isInWishlist(CategoryData.id);
+                      toggleWishlist(product);
+
+                      toast.success(
+                        alreadyWishlisted
+                          ? "Removed from wishlist"
+                          : "Added to wishlist",
+                        {
+                          position: "bottom-right",
+                        },
+                      );
+                    }}
+                    className={`text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full mb-2 transition-all cursor-pointer ${
+                      isInWishlist(CategoryData.id)
+                        ? "bg-Secondary2_DB4444 text-text_FAFAFA"
+                        : "hover:bg-Secondary2_DB4444 hover:text-text_FAFAFA"
+                    }`}
+                  >
+                    <IoIosHeartEmpty className="text-2xl" />
+                  </button>
 
                   <span className="text-Text2_000000 p-2 bg-Primary_FFFFFF block rounded-full hover:bg-Primary1_363738 hover:text-text_FAFAFA transition-all cursor-pointer">
                     <IoEyeOutline className="text-2xl " />

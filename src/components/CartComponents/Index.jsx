@@ -123,7 +123,7 @@ const CartComponents = () => {
             </div>
           </div>
 
-          <div className=" ">
+          <div className="cartTotal">
             {/* <div className="flex gap-4">
             <div>
               <input
@@ -172,9 +172,11 @@ const CartComponents = () => {
                   </h5>
                 </div>
                 <div className="text-center">
-                  <button className="font-poppins text-base font-medium py-4 px-12  cursor-pointer rounded bg-Button2_DB4444 text-text_FAFAFA ">
-                    Procees to checkout
-                  </button>
+                  <Link to={"/checkout"}>
+                    <button className="font-poppins text-base font-medium py-4 px-12  cursor-pointer rounded bg-Button2_DB4444 text-text_FAFAFA ">
+                      Proceed To Checkout
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

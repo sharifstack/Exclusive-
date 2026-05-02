@@ -6,13 +6,16 @@ import AuthProvider from "./Features/Auth/AuthContext.jsx";
 import { store } from "../src/Features/store.js";
 import { Provider } from "react-redux";
 import CartProvider from "./Features/Cart/CartContext.jsx";
+import WishlistProvider from "./Features/Wishlist/WishlistContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
       <AuthProvider>
         <CartProvider>
-          <App />
+          <WishlistProvider>
+            <App />
+          </WishlistProvider>
         </CartProvider>
       </AuthProvider>
     </Provider>

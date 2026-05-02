@@ -6,9 +6,20 @@ import bkash from "../../assets/Checkout/bkash.png";
 import visa from "../../assets/Checkout/visa.png";
 import mastercard from "../../assets/Checkout/Mastercard.png";
 import nagad from "../../assets/Checkout/nagad.png";
+import useCart from "../../helpers/hooks/useCart";
 
 export const CheckOut = () => {
   const [check, setCheck] = useState(false);
+  const { cartItems } = useCart();
+  const [paymentMethod, setPaymentMethod] = useState("");
+
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  const shipping = 0;
+  const total = subtotal + shipping;
 
   const ChackHandler = () => {
     setCheck(!check);
@@ -152,36 +163,38 @@ export const CheckOut = () => {
           <div className="UserPayment w-3/5 mt-8 flex flex-col items-end">
             <div className="w-1/2 mr-[53px]">
               <div className="Porducts">
-                <div className="flex justify-between">
-                  <div className="flex gap-6">
-                    <img src={productimg} alt={productimg} />
-                    <h4 className="font-poppins font-normal text-base text-Text2_000000">
-                      LCD Monitor
-                    </h4>
-                  </div>
-                  <p className="font-poppins font-normal text-base text-Text2_000000">
-                    $650
+                {cartItems.length === 0 ? (
+                  <p className="font-poppins text-lg text-center mb-2 text-Secondary2_DB4444">
+                    Your cart is empty.
                   </p>
-                </div>
+                ) : (
+                  cartItems.map((item) => (
+                    <div
+                      key={`${item.id}-${item.selectedSize || ""}-${item.selectedColor || ""}`}
+                      className="flex justify-between my-6"
+                    >
+                      <div className="flex gap-6">
+                        <img
+                          className="w-10"
+                          src={item.image}
+                          alt={item.title}
+                        />
+                        <h4 className="font-poppins text-base">{item.title}</h4>
+                      </div>
 
-                <div className="flex justify-between my-8">
-                  <div className="flex gap-6">
-                    <img src={productimg} alt={productimg} />
-                    <h4 className="font-poppins font-normal text-base text-Text2_000000">
-                      LCD Monitor
-                    </h4>
-                  </div>
-                  <p className="font-poppins font-normal text-base text-Text2_000000">
-                    $1100
-                  </p>
-                </div>
+                      <p className="font-poppins text-base">
+                        ${(item.price * item.quantity).toFixed(2)}
+                      </p>
+                    </div>
+                  ))
+                )}
               </div>
               <div className="flex justify-between border-b pb-4    ">
                 <h5 className="font-poppins font-normal text-base text-Text2_000000">
                   Subtotal:
                 </h5>
                 <h5 className="font-poppins font-normal text-base text-Text2_000000">
-                  $1750
+                  ${total.toFixed(2)}
                 </h5>
               </div>
               <div className="flex justify-between border-b py-4">
@@ -197,34 +210,44 @@ export const CheckOut = () => {
                   Total:
                 </h5>
                 <h5 className="font-poppins font-normal text-base text-Text2_000000">
-                  $1750
+                  ${total.toFixed(2)}
                 </h5>
               </div>
               <div className="Bank">
-                <div className="flex items-center justify-between">
-                  <div className="flex  items-center gap-4">
-                    <span className="block w-5 h-5 border border-black rounded-full"></span>
-                    <h5 className="font-poppins font-normal text-base text-Text2_000000">
-                      Bank
-                    </h5>
+                <div
+                  onClick={() => setPaymentMethod("bank")}
+                  className="flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`w-5 h-5 border border-black rounded-full flex items-center justify-center
+      ${paymentMethod === "bank" ? "bg-black" : ""}`}
+                    ></span>
+
+                    <h5 className="font-poppins text-base">Bank</h5>
                   </div>
 
                   <div className="flex items-center gap-2.5">
-                    <img src={bkash} alt={bkash} />
-                    <img src={visa} alt={visa} />
-                    <img src={mastercard} alt={mastercard} />
-                    <img src={nagad} alt={nagad} />
+                    <img src={bkash} />
+                    <img src={visa} />
+                    <img src={mastercard} />
+                    <img src={nagad} />
                   </div>
                 </div>
               </div>
 
-              <div className="Bank my-8">
-                <div className="flex items-center justify-between">
-                  <div className="flex  items-center gap-4">
-                    <span className="block w-5 h-5 border border-black rounded-full"></span>
-                    <h5 className="font-poppins font-normal text-base text-Text2_000000">
-                      Cash on delivery
-                    </h5>
+              <div className="Cod my-8">
+                <div
+                  onClick={() => setPaymentMethod("cod")}
+                  className="flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-4">
+                    <span
+                      className={`w-5 h-5 border border-black rounded-full flex items-center justify-center
+      ${paymentMethod === "cod" ? "bg-black " : ""}`}
+                    ></span>
+
+                    <h5 className="font-poppins text-base">Cash on delivery</h5>
                   </div>
                 </div>
               </div>

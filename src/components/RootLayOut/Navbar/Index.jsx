@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CiHeart, CiStar } from "react-icons/ci";
 import { ImCancelCircle } from "react-icons/im";
 import {
@@ -19,8 +19,13 @@ import { FaCircleInfo } from "react-icons/fa6";
 import useAuth from "../../../Features/Auth/hooks/useAuth";
 import useCart from "../../../helpers/hooks/useCart";
 import { span } from "framer-motion/client";
+import toast from "react-hot-toast";
+import { useGetAllProductQuery } from "../../../Features/Api/ProductApi";
 
 const Navbar = () => {
+  const { data } = useGetAllProductQuery();
+  const [searchTerm, setSearchTerm] = useState("");
+  const [show, setShow] = useState(false);
   const { user, login } = useAuth();
   const { logout } = useAuth();
   const { cartItems } = useCart();
@@ -29,8 +34,22 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     await logout();
+    toast.success("Logout successful", {
+      position: "top-center",
+      style: { fontSize: "20px", padding: "15px 20px" },
+    });
     setAccount(false);
   };
+
+  const filtered = useMemo(() => {
+    if (!searchTerm.trim()) return [];
+
+    return (data?.products || [])
+      .filter((item) =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase()),
+      )
+      .slice(0, 6);
+  }, [searchTerm, data]);
 
   const navItems = [
     {
@@ -100,17 +119,47 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="basis-1/3 relative flex items-center justify-between">
-              <div className="search_Box">
+              <div className="search_Box relative">
                 <input
                   type="text"
-                  className="bg-Secondary_F5F5F5 py-2.5 pl-5 pr-[70px]"
+                  value={searchTerm}
+                  onChange={(e) => {
+                    setSearchTerm(e.target.value);
+                    setShow(true);
+                  }}
+                  onFocus={() => setShow(true)}
+                  className="bg-Secondary_F5F5F5 py-2.5 pl-5 pr-[70px] w-full"
                   placeholder="What are you looking for?"
                 />
-                <span className="absolute top-1/2 -translate-y-1/2 right-1/2">
-                  <IoSearchOutline className=" w-5 h-5" />
-                </span>
-              </div>
 
+                <span className="absolute top-1/2 -translate-y-1/2 right-5">
+                  <IoSearchOutline className="w-5 h-5" />
+                </span>
+
+                {show && filtered.length > 0 && (
+                  <div className="absolute left-0 top-full mt-2 w-full bg-white border shadow-lg rounded z-50 max-h-60 overflow-auto">
+                    {filtered.map((item) => (
+                      <Link
+                        key={item.id}
+                        to={`/productdetails/${item.id}`}
+                        onClick={() => {
+                          setSearchTerm("");
+                          setShow(false);
+                        }}
+                        className="block px-4 py-3 hover:bg-gray-100 border-b last:border-b-0"
+                      >
+                        {item.title}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {show && searchTerm && filtered.length === 0 && (
+                  <div className="absolute left-0 top-full mt-2 w-full bg-white border shadow-lg rounded z-50 px-4 py-3">
+                    No products found
+                  </div>
+                )}
+              </div>
               <div className="icons flex items-center gap-5 ">
                 <Link to={"/wishlist"}>
                   <span className="cursor-pointer text-button_000000 text-[30px]">
@@ -135,8 +184,11 @@ const Navbar = () => {
                     <LuUser />
                   </span>
                 ) : (
-                  <Link to={"/login"} className="font-base">
-                    Log in
+                  <Link
+                    to={"/login"}
+                    className="font-base font-poppins text-Secondary2_DB4444 font-bold"
+                  >
+                    Login
                   </Link>
                 )}
 
@@ -447,17 +499,48 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="searchBoxResponsive flex my-1 sm:hidden ">
+      <div className="searchBoxResponsive flex my-1 sm:hidden">
         <div className="container">
-          <div className="search_Box border rounded">
+          <div className="search_Box border rounded relative">
             <input
               type="text"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                setShow(true);
+              }}
+              onFocus={() => setShow(true)}
               className="bg-Secondary_F5F5F5 py-2.5 pl-5 pr-[70px] w-full placeholder:text-sm"
               placeholder="What are you looking for?"
             />
-            <span className="absolute top-[120px] -translate-y-1/2 right-[30px] ">
-              <IoSearchOutline className=" w-6 h-6 " />
+
+            <span className="absolute top-1/2 -translate-y-1/2 right-[30px]">
+              <IoSearchOutline className="w-6 h-6" />
             </span>
+
+            {show && filtered.length > 0 && (
+              <div className="absolute left-0 top-full mt-2 w-full bg-white border shadow-lg rounded z-50 max-h-60 overflow-auto">
+                {filtered.map((item) => (
+                  <Link
+                    key={item.id}
+                    to={`/productdetails/${item.id}`}
+                    onClick={() => {
+                      setSearchTerm("");
+                      setShow(false);
+                    }}
+                    className="block px-4 py-3 hover:bg-gray-100 border-b last:border-b-0"
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            {show && searchTerm && filtered.length === 0 && (
+              <div className="absolute left-0 top-full mt-2 w-full bg-white border shadow-lg rounded z-50 px-4 py-3">
+                No products found
+              </div>
+            )}
           </div>
         </div>
       </div>

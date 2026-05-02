@@ -6,10 +6,12 @@ import { loginValidation } from "../../Validation/loginValidation";
 import useAuth from "../../Features/Auth/hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { getAuthErrorMessage } from "../../Features/Auth/authService";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [eye, setEye] = useState(false);
   const { login } = useAuth();
+  const { googleLogin } = useAuth();
   const navigate = useNavigate();
 
   const formik = useFormik({
@@ -28,6 +30,13 @@ const Login = () => {
         });
 
         navigate("/");
+        toast.success("Login successful", {
+          position: "top-center",
+          style: {
+            fontSize: "20px",
+            padding: "15px 20px",
+          },
+        });
       } catch (err) {
         setErrors({
           email: getAuthErrorMessage(err.code),
@@ -124,6 +133,29 @@ const Login = () => {
                   </div>
                 </div>
               </form>
+
+              <button
+                onClick={async () => {
+                  try {
+                    await googleLogin();
+
+                    toast.success("Logged in with Google", {
+                      position: "top-center",
+                      style: {
+                        fontSize: "20px",
+                        padding: "15px 20px",
+                      },
+                    });
+
+                    navigate("/");
+                  } catch (err) {
+                    toast.error("Google login failed");
+                  }
+                }}
+                className="border py-3 px-6 w-full mt-4"
+              >
+                Continue with Google
+              </button>
             </div>
           </div>
         </div>
